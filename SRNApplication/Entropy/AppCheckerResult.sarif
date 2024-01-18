@@ -4893,6 +4893,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "RequesterScreen.RequestForm.'Item Type_DataCard1'.ItemTypeDropdown.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "RequesterScreen.RequestForm.'Item Type_DataCard1'.ItemTypeDropdown.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "RequesterScreen",
+                "type": "RequesterScreen.RequestForm.'Item Type_DataCard1'.ItemTypeDropdown"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.VarItemloading"
                 }
               ],

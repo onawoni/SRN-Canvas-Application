@@ -225,7 +225,7 @@ RequesterScreen As screen:
             Required: =false
             Update: =ProjectTypeDropdown.Selected.Value
             Width: =683
-            X: =0
+            X: =1
             Y: =2
             ZIndex: =1
 
@@ -284,6 +284,66 @@ RequesterScreen As screen:
                 Y: =90
                 ZIndex: =6
 
+        "'Item Type_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ItemType"
+            Default: =ThisItem.'Item Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ItemType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ItemType")
+            Required: =true
+            Update: =ItemTypeDropdown.Selected.Value
+            Width: =683
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey21 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage21 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =ItemTypeDropdown.Y + ItemTypeDropdown.Height
+                ZIndex: =3
+
+            StarVisible21 As label:
+                Align: =Align.Center
+                Height: =DataCardKey21.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey21.Y
+                ZIndex: =4
+
+            ItemTypeDropdown As dropdown:
+                Items: =["","Fuel","Others"]
+                Width: =623
+                X: =30
+                Y: =40
+                ZIndex: =5
+
         "'Item Category_DataCard1' As typedDataCard.textualEditCard":
             BorderStyle: =BorderStyle.Solid
             DataField: ="ItemCategory"
@@ -296,8 +356,8 @@ RequesterScreen As screen:
             Required: =false
             Update: =ItemCategoryDropdown.Selected.Value
             Width: =683
-            X: =1
-            Y: =2
+            X: =0
+            Y: =3
             ZIndex: =1
 
             DataCardKey16 As label:
@@ -556,8 +616,8 @@ RequesterScreen As screen:
             Required: =false
             Update: =PRComboBox.Selected.'Request ID'
             Width: =683
-            X: =1
-            Y: =4
+            X: =0
+            Y: =5
             ZIndex: =1
 
             DataCardKey14 As label:
@@ -623,7 +683,7 @@ RequesterScreen As screen:
             Update: =RequestNo.Text
             Visible: =false
             Width: =683
-            X: =1
+            X: =0
             Y: =7
             ZIndex: =1
 
@@ -901,7 +961,7 @@ RequesterScreen As screen:
             Required: =false
             Update: =ItmesComboBox.Selected.'Display Name'
             Width: =683
-            X: =0
+            X: =1
             Y: =3
             ZIndex: =7
 
@@ -995,6 +1055,72 @@ RequesterScreen As screen:
                 Y: =96
                 ZIndex: =7
 
+        "'Expected Date_DataCard1' As typedDataCard.dateEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ExpectedDate"
+            Default: =ThisItem.'Expected Date'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ExpectedDate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue15.SelectedDate
+            Width: =683
+            X: =1
+            Y: =4
+            ZIndex: =7
+
+            DataCardKey15 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue15 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey15.Y + DataCardKey15.Height + 5
+                ZIndex: =2
+
+            ErrorMessage15 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue15.Y + DataCardValue15.Height
+                ZIndex: =3
+
+            StarVisible15 As label:
+                Align: =Align.Center
+                Height: =DataCardKey15.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey15.Y
+                ZIndex: =4
+
         "'Service Type_DataCard1' As typedDataCard.comboBoxEditCard":
             BorderStyle: =BorderStyle.Solid
             DataField: ="ServiceType"
@@ -1006,8 +1132,8 @@ RequesterScreen As screen:
             Required: =true
             Update: =DataCardValue4.Selected
             Width: =683
-            X: =1
-            Y: =3
+            X: =0
+            Y: =4
             ZIndex: =7
 
             DataCardKey4 As label:
@@ -1066,72 +1192,6 @@ RequesterScreen As screen:
                 Y: =DataCardKey4.Y
                 ZIndex: =4
 
-        "'Expected Date_DataCard1' As typedDataCard.dateEditCard":
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="ExpectedDate"
-            Default: =ThisItem.'Expected Date'
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ExpectedDate")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            Required: =true
-            Update: =DataCardValue15.SelectedDate
-            Width: =683
-            X: =0
-            Y: =4
-            ZIndex: =7
-
-            DataCardKey15 As label:
-                AutoHeight: =true
-                Color: =RGBA(255, 255, 255, 1)
-                FontWeight: =FontWeight.Bold
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue15 As datepicker:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                DisplayMode: =Parent.DisplayMode
-                EndYear: =Year(Today())+100
-                IsEditable: =true
-                PaddingBottom: =0
-                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                StartYear: =1899
-                Tooltip: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey15.Y + DataCardKey15.Height + 5
-                ZIndex: =2
-
-            ErrorMessage15 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardValue15.Y + DataCardValue15.Height
-                ZIndex: =3
-
-            StarVisible15 As label:
-                Align: =Align.Center
-                Height: =DataCardKey15.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey15.Y
-                ZIndex: =4
-
         "'Issue Description_DataCard' As typedDataCard.textualEditCard":
             BorderStyle: =BorderStyle.Solid
             DataField: ="IssueDescription"
@@ -1145,7 +1205,7 @@ RequesterScreen As screen:
             Update: =DataCardValue5.Text
             Width: =1366
             X: =0
-            Y: =5
+            Y: =6
             ZIndex: =7
 
             DataCardKey5 As label:
@@ -1220,8 +1280,8 @@ RequesterScreen As screen:
             Update: =DataCardValue9.Text
             Visible: =false
             Width: =683
-            X: =0
-            Y: =6
+            X: =1
+            Y: =7
             ZIndex: =7
 
             DataCardKey9 As label:
@@ -1289,8 +1349,8 @@ RequesterScreen As screen:
             Update: =DataCardValue3.Text
             Visible: =false
             Width: =683
-            X: =1
-            Y: =6
+            X: =0
+            Y: =8
             ZIndex: =7
 
             DataCardKey3 As label:
@@ -1358,8 +1418,8 @@ RequesterScreen As screen:
             Update: =DataCardValue8.Text
             Visible: =false
             Width: =683
-            X: =0
-            Y: =7
+            X: =1
+            Y: =8
             ZIndex: =7
 
             DataCardKey8 As label:
@@ -1428,7 +1488,7 @@ RequesterScreen As screen:
             Visible: =false
             Width: =683
             X: =0
-            Y: =8
+            Y: =9
             ZIndex: =7
 
             DataCardKey6 As label:
