@@ -213,6 +213,93 @@ RequesterScreen As screen:
                 Y: =DataCardKey17.Y
                 ZIndex: =4
 
+        "'Item Type_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ItemType"
+            Default: =ThisItem.'Item Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ItemType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ItemType")
+            Required: =true
+            Update: =ItemTypeDropdown.Selected.Value
+            Width: =683
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey21 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage21 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =ItemTypeDropdown.Y + ItemTypeDropdown.Height
+                ZIndex: =3
+
+            StarVisible21 As label:
+                Align: =Align.Center
+                Height: =DataCardKey21.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey21.Y
+                ZIndex: =4
+
+            ItemTypeDropdown As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Items: =["","Fuel","Others"]
+                OnChange: |-
+                    =If(ItemTypeDropdown.Selected.Value = "Fuel",UpdateContext({jobs:true}),Select(RestJobsButton))
+                Width: =623
+                X: =30
+                Y: =40
+                ZIndex: =5
+
+            "'Preview Job Details' As button":
+                Color: =RGBA(0, 94, 146, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =30
+                OnSelect: |-
+                    =UpdateContext({jobs:true})
+                Text: ="Preview Job Details"
+                Visible: =If(ItemTypeDropdown.Selected.Value = "Fuel",true, false)
+                Width: =250
+                X: =150
+                Y: =90
+                ZIndex: =6
+
+            RestJobsButton As button:
+                OnSelect: |-
+                    =Reset(JobTaskComboBox);
+                    Reset(JobPlanningComboBox)
+                Text: ="RestJobs"
+                Visible: =false
+                X: =444
+                Y: =80
+                ZIndex: =7
+
         "'Project Type_DataCard1' As typedDataCard.textualEditCard":
             BorderStyle: =BorderStyle.Solid
             DataField: ="ProjectType"
@@ -283,66 +370,6 @@ RequesterScreen As screen:
                 X: =130
                 Y: =90
                 ZIndex: =6
-
-        "'Item Type_DataCard1' As typedDataCard.textualEditCard":
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="ItemType"
-            Default: =ThisItem.'Item Type'
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ItemType")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ItemType")
-            Required: =true
-            Update: =ItemTypeDropdown.Selected.Value
-            Width: =683
-            X: =0
-            Y: =2
-            ZIndex: =1
-
-            DataCardKey21 As label:
-                AutoHeight: =true
-                Color: =RGBA(255, 255, 255, 1)
-                FontWeight: =FontWeight.Bold
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            ErrorMessage21 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =ItemTypeDropdown.Y + ItemTypeDropdown.Height
-                ZIndex: =3
-
-            StarVisible21 As label:
-                Align: =Align.Center
-                Height: =DataCardKey21.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey21.Y
-                ZIndex: =4
-
-            ItemTypeDropdown As dropdown:
-                Items: =["","Fuel","Others"]
-                Width: =623
-                X: =30
-                Y: =40
-                ZIndex: =5
 
         "'Item Category_DataCard1' As typedDataCard.textualEditCard":
             BorderStyle: =BorderStyle.Solid
@@ -1055,72 +1082,6 @@ RequesterScreen As screen:
                 Y: =96
                 ZIndex: =7
 
-        "'Expected Date_DataCard1' As typedDataCard.dateEditCard":
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="ExpectedDate"
-            Default: =ThisItem.'Expected Date'
-            DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ExpectedDate")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            Required: =true
-            Update: =DataCardValue15.SelectedDate
-            Width: =683
-            X: =1
-            Y: =4
-            ZIndex: =7
-
-            DataCardKey15 As label:
-                AutoHeight: =true
-                Color: =RGBA(255, 255, 255, 1)
-                FontWeight: =FontWeight.Bold
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            DataCardValue15 As datepicker:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                DisplayMode: =Parent.DisplayMode
-                EndYear: =Year(Today())+100
-                IsEditable: =true
-                PaddingBottom: =0
-                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                StartYear: =1899
-                Tooltip: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey15.Y + DataCardKey15.Height + 5
-                ZIndex: =2
-
-            ErrorMessage15 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardValue15.Y + DataCardValue15.Height
-                ZIndex: =3
-
-            StarVisible15 As label:
-                Align: =Align.Center
-                Height: =DataCardKey15.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey15.Y
-                ZIndex: =4
-
         "'Service Type_DataCard1' As typedDataCard.comboBoxEditCard":
             BorderStyle: =BorderStyle.Solid
             DataField: ="ServiceType"
@@ -1190,6 +1151,72 @@ RequesterScreen As screen:
                 Width: =30
                 Wrap: =false
                 Y: =DataCardKey4.Y
+                ZIndex: =4
+
+        "'Expected Date_DataCard1' As typedDataCard.dateEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ExpectedDate"
+            Default: =ThisItem.'Expected Date'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ExpectedDate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue15.SelectedDate
+            Width: =683
+            X: =1
+            Y: =4
+            ZIndex: =7
+
+            DataCardKey15 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue15 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey15.Y + DataCardKey15.Height + 5
+                ZIndex: =2
+
+            ErrorMessage15 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue15.Y + DataCardValue15.Height
+                ZIndex: =3
+
+            StarVisible15 As label:
+                Align: =Align.Center
+                Height: =DataCardKey15.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey15.Y
                 ZIndex: =4
 
         "'Issue Description_DataCard' As typedDataCard.textualEditCard":
@@ -1891,4 +1918,249 @@ RequesterScreen As screen:
         X: =582
         Y: =65
         ZIndex: =13
+
+    Container5 As groupContainer.manualLayoutContainer:
+        Height: =768
+        Visible: =jobs
+        Width: =1366
+        ZIndex: =14
+
+        Rectangle10 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.8)
+            Height: =663
+            Width: =1366
+            Y: =105
+            ZIndex: =1
+
+        Rectangle22_1 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =603
+            Width: =670
+            X: =696
+            Y: =165
+            ZIndex: =2
+
+        Rectangle22 As rectangle:
+            Fill: =RGBA(0, 94, 146, 1)
+            Height: =603
+            Width: =670
+            Y: =165
+            ZIndex: =3
+
+        Icon21 As icon.CancelBadge:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Icon: =Icon.CancelBadge
+            OnSelect: |-
+                =UpdateContext({jobs:false})
+            Width: =50
+            X: =1281
+            Y: =111
+            ZIndex: =4
+
+        Label19 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =44
+            Size: =25
+            Text: ="Please select Job Task Number and related Job Planning Line"
+            Width: =1184
+            X: =56
+            Y: =111
+            ZIndex: =5
+
+        JobTaskComboBox As combobox:
+            ChevronBackground: =RGBA(255, 255, 255, 1)
+            ChevronFill: =RGBA(0, 94, 146, 1)
+            DisplayFields: =["jobNo"]
+            Items: ='jobTaskSet (snapnetLimited/jobTasks/v2.0)'
+            SearchFields: =["jobNo"]
+            SearchItems: =Search('jobTaskSet (snapnetLimited/jobTasks/v2.0)',JobTaskComboBox.SearchText,"jobNo")
+            SelectMultiple: =false
+            X: =140
+            Y: =244
+            ZIndex: =6
+
+        Label20 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: ="Job Task Number"
+            Width: =328
+            X: =140
+            Y: =189
+            ZIndex: =7
+
+        Label20_1 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =80
+            Size: =25
+            Text: |-
+                =">
+                <"
+            Width: =24
+            X: =667
+            Y: =394
+            ZIndex: =8
+
+        Label20_2 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: =JobTaskComboBox.Selected.Description
+            Width: =328
+            X: =1018
+            Y: =229
+            ZIndex: =9
+
+        Label20_3 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: =JobTaskComboBox.Selected.jobTaskType
+            Width: =328
+            X: =1018
+            Y: =275
+            ZIndex: =10
+
+        Label20_4 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: ="Description"
+            Width: =296
+            X: =708
+            Y: =229
+            ZIndex: =11
+
+        Label20_5 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: ="Job Task Type"
+            Width: =296
+            X: =708
+            Y: =275
+            ZIndex: =12
+
+        JobPlanningComboBox As combobox:
+            ChevronBackground: =RGBA(255, 255, 255, 1)
+            ChevronFill: =RGBA(0, 94, 146, 1)
+            DisplayFields: =["jobTaskNo"]
+            IsSearchable: =false
+            Items: =Filter('jobPlanningLinesSet (snapnetLimited/jobPlanningLinesAPI/v2.0)',jobNo = JobTaskComboBox.Selected.jobNo)
+            SearchFields: =["jobNo"]
+            SearchItems: =[]
+            SelectMultiple: =false
+            X: =140
+            Y: =449
+            ZIndex: =13
+
+        Label20_6 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: ="Job Planning Number"
+            Width: =328
+            X: =140
+            Y: =394
+            ZIndex: =14
+
+        Label20_7 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: =JobTaskComboBox.Selected.jobNo
+            Width: =328
+            X: =1018
+            Y: =321
+            ZIndex: =15
+
+        Label20_8 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: ="Job Task Number"
+            Width: =296
+            X: =708
+            Y: =321
+            ZIndex: =16
+
+        Label20_9 As label:
+            Align: =Align.Center
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =20
+            Text: ="Job Task Details"
+            Width: =296
+            X: =838
+            Y: =177
+            ZIndex: =17
+
+        Label20_10 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: =JobTaskComboBox.Selected.Description
+            Width: =328
+            X: =1018
+            Y: =491
+            ZIndex: =18
+
+        Label20_12 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: ="Description"
+            Width: =296
+            X: =708
+            Y: =491
+            ZIndex: =20
+
+        Label20_14 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: =JobPlanningComboBox.Selected.jobTaskNo
+            Width: =328
+            X: =1018
+            Y: =543
+            ZIndex: =22
+
+        Label20_15 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =15
+            Text: ="Job Task Number"
+            Width: =296
+            X: =708
+            Y: =543
+            ZIndex: =23
+
+        Label20_16 As label:
+            Align: =Align.Center
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =45
+            Size: =20
+            Text: ="Job Planning Details"
+            Width: =296
+            X: =838
+            Y: =439
+            ZIndex: =24
 
