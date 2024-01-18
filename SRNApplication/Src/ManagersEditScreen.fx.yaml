@@ -108,6 +108,146 @@ ManagersEditScreen As screen:
         Y: =174
         ZIndex: =10
 
+        "'Item Type_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ItemType"
+            Default: =ThisItem.'Item Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ItemType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ItemType")
+            Required: =false
+            Update: =DataCardValue13.Text
+            Width: =682
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey24 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue13 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey24.Y + DataCardKey24.Height + 5
+                ZIndex: =2
+
+            ErrorMessage24 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue13.Y + DataCardValue13.Height
+                ZIndex: =3
+
+            StarVisible24 As label:
+                Align: =Align.Center
+                Height: =DataCardKey24.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey24.Y
+                ZIndex: =4
+
+        "'Project Type_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ProjectType"
+            Default: =ThisItem.'Project Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ProjectType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ProjectType")
+            Required: =false
+            Update: =DataCardValue12.Text
+            Width: =682
+            X: =1
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey23 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue12 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey23.Y + DataCardKey23.Height + 5
+                ZIndex: =2
+
+            ErrorMessage23 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue12.Y + DataCardValue12.Height
+                ZIndex: =3
+
+            StarVisible23 As label:
+                Align: =Align.Center
+                Height: =DataCardKey23.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey23.Y
+                ZIndex: =4
+
         "'PR Number_DataCard1' As typedDataCard.textualEditCard":
             BorderStyle: =BorderStyle.Solid
             DataField: ="PRNumber"
@@ -121,7 +261,7 @@ ManagersEditScreen As screen:
             Update: =DataCardValue6.Text
             Width: =682
             X: =1
-            Y: =2
+            Y: =3
             ZIndex: =1
 
             DataCardKey12 As label:
@@ -192,7 +332,7 @@ ManagersEditScreen As screen:
             Visible: =false
             Width: =682
             X: =0
-            Y: =4
+            Y: =5
             ZIndex: =1
 
             DataCardKey11 As label:
@@ -538,7 +678,7 @@ ManagersEditScreen As screen:
             Update: =DataCardValue33_1.SelectedDate
             Width: =682
             X: =0
-            Y: =2
+            Y: =3
             ZIndex: =11
 
             DataCardKey33_1 As label:
@@ -606,7 +746,7 @@ ManagersEditScreen As screen:
             Update: =DataCardValue23_1.Text
             Width: =1364
             X: =0
-            Y: =3
+            Y: =4
             ZIndex: =11
 
             DataCardKey23_1 As label:
@@ -678,7 +818,7 @@ ManagersEditScreen As screen:
             Update: =ApprovalCommentTextInput_1.Text
             Width: =1364
             X: =0
-            Y: =5
+            Y: =6
             ZIndex: =11
 
             DataCardKey30_1 As label:
@@ -862,7 +1002,7 @@ ManagersEditScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Text: ="Item No"
                 Width: =111
-                X: =425
+                X: =345
                 Y: =186
                 ZIndex: =6
 
@@ -905,7 +1045,7 @@ ManagersEditScreen As screen:
                 DisplayMode: =DisplayMode.View
                 Height: =38
                 OnSelect: =Select(Parent)
-                Width: =380
+                Width: =300
                 X: =3
                 ZIndex: =1
 
@@ -914,8 +1054,8 @@ ManagersEditScreen As screen:
                 DisplayMode: =DisplayMode.View
                 Height: =38
                 OnSelect: =Select(Parent)
-                Width: =200
-                X: =388
+                Width: =180
+                X: =308
                 ZIndex: =2
 
             Man_Quantity As text:
@@ -971,9 +1111,18 @@ ManagersEditScreen As screen:
                 DisplayMode: =DisplayMode.View
                 Height: =38
                 OnSelect: =Select(Parent)
-                Width: =368
-                X: =590
+                Width: =362
+                X: =595
                 ZIndex: =6
+
+            TextInput4_11 As text:
+                Default: =ThisItem.'Job Number'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =100
+                X: =490
+                ZIndex: =7
 
         Icon17 As icon.CancelBadge:
             Height: =40
@@ -1002,6 +1151,15 @@ ManagersEditScreen As screen:
             X: =656
             Y: =188
             ZIndex: =13
+
+        Label9_12 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Text: ="Job No"
+            Width: =111
+            X: =508
+            Y: =188
+            ZIndex: =14
 
     Label14 As label:
         Color: =RGBA(0, 94, 146, 1)
