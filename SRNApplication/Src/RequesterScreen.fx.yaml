@@ -1583,8 +1583,10 @@ RequesterScreen As screen:
                 DisplayMode.Edit
             )
         Fill: =RGBA(255, 255, 255, 1)
-        OnSelect: |
+        OnSelect: |-
             =//SubmitForm(RequestForm);
+            If(ItemTypeDropdown.Selected.Value = "Others",
+            
             Set(
                 varRecord,
                 ( Patch(
@@ -1597,9 +1599,10 @@ RequesterScreen As screen:
                         'Service Type': DataCardValue4.Selected,
                         'Expected Date': DataCardValue15.SelectedDate,
                         'Issue Description': DataCardValue5.Text,
-                        'SRN Number':RequestNo.Text,
+                        'SRN Number': RequestNo.Text,
                         'PR Number': PRComboBox.Selected.'Request ID',
-                        'Project Type':ProjectTypeDropdown.Selected.ProjectType
+                        'Project Type': ProjectTypeDropdown.Selected.ProjectType,
+                        'Item Type': ItemTypeDropdown.Selected.Value
                     }
                 ))
             );
@@ -1613,11 +1616,59 @@ RequesterScreen As screen:
                         'Item Number': Coll_Item_No,
                         'Inventory Balance': Coll_Item_Inventory,
                         Quantity: Coll_Item_Quantity,
-                        Description:Coll_Item_Description,
-                        'LineItem ID': varRecord.ID
+                        Description: Coll_Item_Description,
+                        'LineItem ID': varRecord.ID,
+                        'Item Type':ItemTypeDropdown.Selected.Value,
+                        'Job Number': Coll_Item_JobNo,
+                        'Job Task Number': Coll_Item_JobPlanningNo
+                    }
+                )
+            );,
+            Set(
+                varRecord,
+                ( Patch(
+                    'Inventory Requisition List',
+                    Defaults('Inventory Requisition List'),
+                    {
+                        'Staff Name': DataCardValue1.Text,
+                        'Staff Email': DataCardValue7.Text,
+                        'Department Type': DepartmentComboBox.Selected.Department,
+                        'Service Type': DataCardValue4.Selected,
+                        'Expected Date': DataCardValue15.SelectedDate,
+                        'Issue Description': DataCardValue5.Text,
+                        'SRN Number': RequestNo.Text,
+                        'PR Number': PRComboBox.Selected.'Request ID',
+                        'Project Type': ProjectTypeDropdown.Selected.ProjectType,
+                        'Item Type': ItemTypeDropdown.Selected.Value
+                    }
+                ))
+            );
+            ForAll(
+                LineItemCollection,
+                Patch(
+                    'SRN Line Items',
+                    Defaults('SRN Line Items'),
+                    {
+                        'Item Name': Coll_Item_Name,
+                        'Item Number': Coll_Item_No,
+                        'Inventory Balance': Coll_Item_Inventory,
+                        Quantity: Coll_Item_Quantity,
+                        Description: Coll_Item_Description,
+                        'LineItem ID': varRecord.ID,
+                        'Item Type':ItemTypeDropdown.Selected.Value,
+                        'Job Number': Coll_Item_JobNo,
+                        'Job Task Number': Coll_Item_JobPlanningNo
                     }
                 )
             );
+            Patch(
+                'SRN Jobs',
+                Defaults('SRN Jobs'),
+                {
+                    'Job Number': JobTaskComboBox.Selected.jobNo,
+                    'Job Task Number': JobPlanningComboBox.Selected.jobTaskNo
+                }
+            ));
             ResetForm(RequestForm);
             Clear(LineItemCollection);
             Navigate(ReqSuccessScreen)

@@ -3,7 +3,7 @@
     "ApiId": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
     "CdpRevision": {
       "BaseUrl": "/",
-      "LastChangedTimeString": "2023-10-31T17:36:11.9190000Z",
+      "LastChangedTimeString": "2024-01-08T17:52:13.4360000Z",
       "RevisionNumber": 1
     },
     "ConnectedDataSourceInfoNameMapping": {
@@ -34,6 +34,9 @@
       "InventoryBalance": "Inventory Balance",
       "ItemName": "Item Name",
       "ItemNumber": "Item Number",
+      "ItemType": "Item Type",
+      "JobNumber": "Job Number",
+      "JobTaskNumber": "Job Task Number",
       "LineItemID": "LineItem ID",
       "LookUp": "Look Up",
       "LookUp#Id": "Look Up Id",

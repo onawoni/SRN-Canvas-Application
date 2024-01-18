@@ -71,6 +71,7 @@ AllSRNEditScreen As screen:
             =SubmitForm(AllSRNForm);
             //Set(varAllSRNForm, Patch('Inventory Requisition List',varAllSRNForm,{'Approval Status':"Pending"}));
             Patch('SRN Line Items',AllSRNEditItemsCollection);
+            Patch('Inventory Requisition List',{'Approval Status':"Pending"});
             Clear(AllSRNEditItemsCollection)
         Text: ="Update"
         Visible: |-
@@ -99,6 +100,76 @@ AllSRNEditScreen As screen:
         Width: =1366
         Y: =180
         ZIndex: =10
+
+        "'Item Type_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ItemType"
+            Default: =ThisItem.'Item Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ItemType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ItemType")
+            Required: =false
+            Update: =DataCardValue11.Text
+            Width: =683
+            X: =1
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey22 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue11 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey22.Y + DataCardKey22.Height + 5
+                ZIndex: =2
+
+            ErrorMessage22 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue11.Y + DataCardValue11.Height
+                ZIndex: =3
+
+            StarVisible22 As label:
+                Align: =Align.Center
+                Height: =DataCardKey22.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey22.Y
+                ZIndex: =4
 
         "'Staff Name_DataCard3' As typedDataCard.textualEditCard":
             BorderStyle: =BorderStyle.Solid
@@ -459,8 +530,8 @@ AllSRNEditScreen As screen:
             Required: =false
             Update: =DataCardValue54.SelectedDate
             Width: =683
-            X: =1
-            Y: =2
+            X: =0
+            Y: =3
             ZIndex: =11
 
             DataCardKey54 As label:
@@ -527,7 +598,7 @@ AllSRNEditScreen As screen:
             Required: =false
             Update: =DataCardValue47.Text
             Width: =683
-            X: =0
+            X: =1
             Y: =3
             ZIndex: =11
 
@@ -597,8 +668,8 @@ AllSRNEditScreen As screen:
             Required: =false
             Update: =DataCardValue44.Text
             Width: =683
-            X: =1
-            Y: =3
+            X: =0
+            Y: =4
             ZIndex: =11
 
             DataCardKey44 As label:
@@ -669,7 +740,7 @@ AllSRNEditScreen As screen:
             Update: =DataCardValue51.Text
             Width: =1366
             X: =0
-            Y: =4
+            Y: =5
             ZIndex: =11
 
             DataCardKey51 As label:
@@ -798,7 +869,7 @@ AllSRNEditScreen As screen:
                 DisplayMode: =DisplayMode.View
                 Height: =38
                 OnSelect: =Select(Parent)
-                Width: =600
+                Width: =450
                 X: =3
                 ZIndex: =1
 
@@ -808,7 +879,7 @@ AllSRNEditScreen As screen:
                 Height: =38
                 OnSelect: =Select(Parent)
                 Width: =148
-                X: =736
+                X: =596
                 ZIndex: =2
 
             Quantity_Update As text:
@@ -816,10 +887,11 @@ AllSRNEditScreen As screen:
                 Height: =38
                 OnSelect: =Select(Parent)
                 Width: =108
-                X: =1005
+                X: =1105
                 ZIndex: =3
 
             Icon8 As icon.Save:
+                Color: =RGBA(255, 255, 255, 1)
                 DisplayMode: =If(DataCardValue47.Text = "Pending" || DataCardValue47.Text = "Depleted", DisplayMode.Disabled,DisplayMode.Edit)
                 Height: =38
                 Icon: =Icon.Save
@@ -854,6 +926,24 @@ AllSRNEditScreen As screen:
                 Y: =6
                 ZIndex: =4
 
+            TextInput4_9 As text:
+                Default: =ThisItem.'Job Number'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =100
+                X: =485
+                ZIndex: =5
+
+            TextInput4_10 As text:
+                Default: =ThisItem.Description
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =300
+                X: =756
+                ZIndex: =6
+
         Group1 As group:
             Height: =5
             Width: =5
@@ -875,7 +965,7 @@ AllSRNEditScreen As screen:
                 Color: =RGBA(255, 255, 255, 1)
                 FontWeight: =FontWeight.Bold
                 Text: ="Item No"
-                X: =750
+                X: =600
                 Y: =185
                 ZIndex: =5
 
@@ -885,7 +975,7 @@ AllSRNEditScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Text: ="Quantity Requested"
                 Width: =200
-                X: =973
+                X: =1053
                 Y: =185
                 ZIndex: =6
 
@@ -894,7 +984,7 @@ AllSRNEditScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Text: ="Update"
                 Width: =100
-                X: =1221
+                X: =1251
                 Y: =185
                 ZIndex: =8
 
@@ -915,4 +1005,20 @@ AllSRNEditScreen As screen:
             X: =1303
             Y: =130
             ZIndex: =10
+
+        Label9_10 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Text: ="Job No"
+            X: =488
+            Y: =185
+            ZIndex: =11
+
+        Label9_11 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Text: ="Description"
+            X: =786
+            Y: =185
+            ZIndex: =12
 
