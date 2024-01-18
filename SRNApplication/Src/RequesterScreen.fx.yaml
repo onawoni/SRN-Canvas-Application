@@ -1666,19 +1666,23 @@ RequesterScreen As screen:
                 Defaults('SRN Jobs'),
                 {
                     'Job Number': JobTaskComboBox.Selected.jobNo,
-                    'Job Task Number': JobPlanningComboBox.Selected.jobTaskNo
+                    'Job Task Number': JobPlanningComboBox.Selected.jobTaskNo,
+                    'Job Line ID':varRecord.ID
                 }
             ));
             ResetForm(RequestForm);
             Clear(LineItemCollection);
-            Navigate(ReqSuccessScreen)
+            Navigate(ReqSuccessScreen);
+            Select(RestJobsButton)
         Text: ="Submit"
         X: =1190
         Y: =728
         ZIndex: =8
 
     Button1_1 As button:
-        OnSelect: =ResetForm(RequestForm)
+        OnSelect: |-
+            =ResetForm(RequestForm);
+            Select(RestJobsButton)
         Text: ="Reset"
         X: =997
         Y: =728
@@ -1696,7 +1700,8 @@ RequesterScreen As screen:
         Icon: =Icon.Home
         OnSelect: |-
             =Navigate(HomeScreen);
-            Clear(LineItemCollection)
+            Clear(LineItemCollection);
+            Select(RestJobsButton)
         Width: =50
         X: =424
         Y: =22

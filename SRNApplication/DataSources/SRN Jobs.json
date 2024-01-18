@@ -30,6 +30,7 @@
       "Editor": "Modified By",
       "Editor#Claims": "Modified By Claims",
       "ID": "ID",
+      "JobLineID": "Job Line ID",
       "JobNumber": "Job Number",
       "JobTaskNumber": "Job Task Number",
       "Modified": "Modified",

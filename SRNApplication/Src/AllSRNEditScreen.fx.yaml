@@ -71,7 +71,7 @@ AllSRNEditScreen As screen:
             =SubmitForm(AllSRNForm);
             //Set(varAllSRNForm, Patch('Inventory Requisition List',varAllSRNForm,{'Approval Status':"Pending"}));
             Patch('SRN Line Items',AllSRNEditItemsCollection);
-            Patch('Inventory Requisition List',{'Approval Status':"Pending"});
+            Patch('Inventory Requisition List',varAllSRNForm,{'Approval Status':"Pending"});
             Clear(AllSRNEditItemsCollection)
         Text: ="Update"
         Visible: |-
