@@ -1,0 +1,918 @@
+AllSRNEditScreen As screen:
+    BackgroundImage: ='New Ladol Images'
+    ImagePosition: =ImagePosition.Fill
+
+    Rectangle1_9 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.7)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    Rectangle2_3 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =120
+        Width: =1366
+        ZIndex: =2
+
+    Rectangle2_12 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        Width: =1366
+        Y: =125
+        ZIndex: =3
+
+    Image3_9 As image:
+        Height: =120
+        Image: =ladol
+        ImagePosition: =ImagePosition.Fill
+        OnSelect: =Navigate(HomeScreen)
+        Width: =361
+        ZIndex: =4
+
+    Label1_9 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =28
+        Text: =User().FullName
+        X: =1128
+        Y: =33
+        ZIndex: =5
+
+    Image4_9 As image:
+        BorderColor: =RGBA(116, 116, 116, 1)
+        Fill: =RGBA(116, 116, 116, 1)
+        Height: =54
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =52
+        X: =1298
+        Y: =16
+        ZIndex: =6
+
+    Label2_3 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =60
+        Size: =15
+        Text: ="SRN REQUEST FORM UPDATE"
+        Width: =544
+        X: =388
+        Y: =25
+        ZIndex: =7
+
+    Button1_7 As button:
+        DisplayMode: =If(DataCardValue47.Text = "Rejected", DisplayMode.Edit, DisplayMode.Disabled)
+        OnSelect: |-
+            =SubmitForm(AllSRNForm);
+            //Set(varAllSRNForm, Patch('Inventory Requisition List',varAllSRNForm,{'Approval Status':"Pending"}));
+            Patch('SRN Line Items',AllSRNEditItemsCollection);
+            Clear(AllSRNEditItemsCollection)
+        Text: ="Update"
+        Visible: |-
+            =true
+            //If(DataCardValue47.Text = "Rejected", true, false)
+        X: =1190
+        Y: =728
+        ZIndex: =8
+
+    Button10 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        OnSelect: |-
+            =UpdateContext({ViewItems:true})
+        Text: ="View Item"
+        X: =1000
+        Y: =728
+        ZIndex: =9
+
+    AllSRNForm As form:
+        DataSource: ='Inventory Requisition List'
+        Height: =535
+        Item: =varAllSRNForm
+        NumberOfColumns: =2
+        OnSuccess: =Navigate(ReqSuccessScreen)
+        Width: =1366
+        Y: =180
+        ZIndex: =10
+
+        "'Staff Name_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Title"
+            Default: =ThisItem.'Staff Name'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"Title")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "Title")
+            Required: =false
+            Update: =DataCardValue40.Text
+            Width: =683
+            X: =0
+            Y: =0
+            ZIndex: =11
+
+            DataCardKey40 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue40 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey40.Y + DataCardKey40.Height + 5
+                ZIndex: =2
+
+            ErrorMessage40 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue40.Y + DataCardValue40.Height
+                ZIndex: =3
+
+            StarVisible40 As label:
+                Align: =Align.Center
+                Height: =DataCardKey40.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey40.Y
+                ZIndex: =4
+
+        "'Staff Email_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="StaffEmail"
+            Default: =ThisItem.'Staff Email'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"StaffEmail")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "StaffEmail")
+            Required: =false
+            Update: =DataCardValue46.Text
+            Width: =683
+            X: =1
+            Y: =0
+            ZIndex: =11
+
+            DataCardKey46 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue46 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey46.Y + DataCardKey46.Height + 5
+                ZIndex: =2
+
+            ErrorMessage46 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue46.Y + DataCardValue46.Height
+                ZIndex: =3
+
+            StarVisible46 As label:
+                Align: =Align.Center
+                Height: =DataCardKey46.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey46.Y
+                ZIndex: =4
+
+        Department_DataCard3 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Department"
+            Default: =ThisItem.Department
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"Department")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "Department")
+            Required: =false
+            Update: =DataCardValue45.Text
+            Width: =683
+            X: =0
+            Y: =1
+            ZIndex: =11
+
+            DataCardKey45 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue45 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey45.Y + DataCardKey45.Height + 5
+                ZIndex: =2
+
+            ErrorMessage45 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue45.Y + DataCardValue45.Height
+                ZIndex: =3
+
+            StarVisible45 As label:
+                Align: =Align.Center
+                Height: =DataCardKey45.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey45.Y
+                ZIndex: =4
+
+        "'Department Type_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="DepartmentType"
+            Default: =ThisItem.'Department Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"DepartmentType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "DepartmentType")
+            Required: =false
+            Update: =DataCardValue49.Text
+            Width: =683
+            X: =1
+            Y: =1
+            ZIndex: =11
+
+            DataCardKey49 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue49 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey49.Y + DataCardKey49.Height + 5
+                ZIndex: =2
+
+            ErrorMessage49 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue49.Y + DataCardValue49.Height
+                ZIndex: =3
+
+            StarVisible49 As label:
+                Align: =Align.Center
+                Height: =DataCardKey49.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey49.Y
+                ZIndex: =4
+
+        "'Service Type_DataCard3' As typedDataCard.comboBoxEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ServiceType"
+            Default: =ThisItem.'Service Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ServiceType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue43.Selected
+            Width: =683
+            X: =0
+            Y: =2
+            ZIndex: =11
+
+            DataCardKey43 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue43 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =DisplayMode.View
+                Items: =Choices([@'Inventory Requisition List'].'Service Type')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Choices('Inventory Requisition List'.'Service Type',DataCardValue43.SearchText)
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey43.Y + DataCardKey43.Height + 5
+                ZIndex: =2
+
+            ErrorMessage43 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue43.Y + DataCardValue43.Height
+                ZIndex: =3
+
+            StarVisible43 As label:
+                Align: =Align.Center
+                Height: =DataCardKey43.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey43.Y
+                ZIndex: =4
+
+        "'Expected Date_DataCard3' As typedDataCard.dateEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ExpectedDate"
+            Default: =ThisItem.'Expected Date'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ExpectedDate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue54.SelectedDate
+            Width: =683
+            X: =1
+            Y: =2
+            ZIndex: =11
+
+            DataCardKey54 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue54 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =DisplayMode.View
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey54.Y + DataCardKey54.Height + 5
+                ZIndex: =2
+
+            ErrorMessage54 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue54.Y + DataCardValue54.Height
+                ZIndex: =3
+
+            StarVisible54 As label:
+                Align: =Align.Center
+                Height: =DataCardKey54.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey54.Y
+                ZIndex: =4
+
+        "'Approval Status_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ApprovalStatus"
+            Default: =ThisItem.'Approval Status'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ApprovalStatus")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ApprovalStatus")
+            Required: =false
+            Update: =DataCardValue47.Text
+            Width: =683
+            X: =0
+            Y: =3
+            ZIndex: =11
+
+            DataCardKey47 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue47 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey47.Y + DataCardKey47.Height + 5
+                ZIndex: =2
+
+            ErrorMessage47 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue47.Y + DataCardValue47.Height
+                ZIndex: =3
+
+            StarVisible47 As label:
+                Align: =Align.Center
+                Height: =DataCardKey47.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey47.Y
+                ZIndex: =4
+
+        "'Issue Description_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="IssueDescription"
+            Default: =ThisItem.'Issue Description'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"IssueDescription")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =138
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "IssueDescription")
+            Required: =false
+            Update: =DataCardValue44.Text
+            Width: =683
+            X: =1
+            Y: =3
+            ZIndex: =11
+
+            DataCardKey44 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue44 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                Height: =87
+                MaxLength: =Parent.MaxLength
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey44.Y + DataCardKey44.Height + 5
+                ZIndex: =2
+
+            ErrorMessage44 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue44.Y + DataCardValue44.Height
+                ZIndex: =3
+
+            StarVisible44 As label:
+                Align: =Align.Center
+                Height: =DataCardKey44.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey44.Y
+                ZIndex: =4
+
+        "'Approval Comment_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Comment"
+            Default: =ThisItem.'Approval Comment'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"Comment")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =143
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "Comment")
+            Required: =false
+            Update: =DataCardValue51.Text
+            Width: =1366
+            X: =0
+            Y: =4
+            ZIndex: =11
+
+            DataCardKey51 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue51 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                Height: =86
+                MaxLength: =Parent.MaxLength
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey51.Y + DataCardKey51.Height + 5
+                ZIndex: =2
+
+            ErrorMessage51 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue51.Y + DataCardValue51.Height
+                ZIndex: =3
+
+            StarVisible51 As label:
+                Align: =Align.Center
+                Height: =DataCardKey51.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey51.Y
+                ZIndex: =4
+
+    Icon4 As icon.Edit:
+        Height: =40
+        Icon: =Icon.Edit
+        OnSelect: =EditForm(AllSRNForm)
+        Width: =40
+        X: =1300
+        Y: =130
+        ZIndex: =11
+
+    Arrow2 As arrow.backArrow:
+        Height: =40
+        OnSelect: =Navigate(AllSRNScreen)
+        Width: =40
+        X: =16
+        Y: =130
+        ZIndex: =12
+
+    All_SRN_RecordID As label:
+        Text: =varAllSRNForm.ID
+        Visible: =false
+        X: =932
+        Y: =35
+        ZIndex: =13
+
+    Container4 As groupContainer.manualLayoutContainer:
+        Height: =768
+        Visible: =ViewItems
+        Width: =1366
+        ZIndex: =14
+
+        Image7 As image:
+            Height: =648
+            Image: ='New Ladol Images'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1366
+            Y: =120
+            ZIndex: =1
+
+        Rectangle9 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.7)
+            Height: =648
+            Width: =1366
+            Y: =120
+            ZIndex: =2
+
+        Rectangle21 As rectangle:
+            Fill: =RGBA(0, 94, 146, 1)
+            Height: =50
+            Width: =1366
+            Y: =180
+            ZIndex: =3
+
+        Man_LineItem_Gallery_2 As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =548
+            Items: |-
+                =//Filter('SRN Line Items','LineItem ID' = LookUp('Inventory Requisition List',ID = varManagerForm.ID).ID);
+                Filter('SRN Line Items','LineItem ID'= Value(All_SRN_RecordID.Text))
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateSize: =44
+            Width: =1366
+            Y: =235
+            ZIndex: =7
+
+            TextInput4_4 As text:
+                Default: =ThisItem.'Item Name'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =600
+                X: =3
+                ZIndex: =1
+
+            TextInput4_6 As text:
+                Default: =ThisItem.'Item Number'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =148
+                X: =736
+                ZIndex: =2
+
+            Quantity_Update As text:
+                Default: =ThisItem.Quantity
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =108
+                X: =1005
+                ZIndex: =3
+
+            Icon8 As icon.Save:
+                DisplayMode: =If(DataCardValue47.Text = "Pending" || DataCardValue47.Text = "Depleted", DisplayMode.Disabled,DisplayMode.Edit)
+                Height: =38
+                Icon: =Icon.Save
+                OnSelect: |-
+                    =If(
+                        ThisItem.ID in AllSRNEditItemsCollection.ID,
+                        Update(
+                            AllSRNEditItemsCollection,
+                            LookUp(
+                                AllSRNEditItemsCollection,
+                                ID = ThisItem.ID
+                            ),
+                            {
+                                ID: ThisItem.ID,
+                                Quantity: Quantity_Update.Text
+                            }
+                        ),
+                        Collect(
+                            AllSRNEditItemsCollection,
+                            {
+                                ID: ThisItem.ID,
+                                Quantity: Quantity_Update.Text
+                            }
+                        )
+                    );
+                    Notify(
+                        "Line Item Updated",
+                        NotificationType.Success
+                    )
+                Width: =44
+                X: =1233
+                Y: =6
+                ZIndex: =4
+
+        Group1 As group:
+            Height: =5
+            Width: =5
+            X: =-460
+            Y: =-430
+            ZIndex: =7
+
+            Label9_4 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Item Name"
+                Width: =200
+                X: =200
+                Y: =185
+                ZIndex: =4
+
+            Label9_5 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Item No"
+                X: =750
+                Y: =185
+                ZIndex: =5
+
+            Label9_6 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Quantity Requested"
+                Width: =200
+                X: =973
+                Y: =185
+                ZIndex: =6
+
+            Label9_7 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Update"
+                Width: =100
+                X: =1221
+                Y: =185
+                ZIndex: =8
+
+        Rectangle21_1 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Width: =1366
+            Y: =125
+            ZIndex: =9
+
+        Icon20 As icon.CancelBadge:
+            Color: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Icon: =Icon.CancelBadge
+            OnSelect: |-
+                =UpdateContext({ViewItems:false})
+            Width: =40
+            X: =1303
+            Y: =130
+            ZIndex: =10
+

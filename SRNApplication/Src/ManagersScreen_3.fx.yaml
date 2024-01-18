@@ -1,0 +1,66 @@
+ManagersScreen_3 As screen:
+    BackgroundImage: ='Ladol Background'
+    ImagePosition: =ImagePosition.Fill
+
+    Rectangle2_7 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =143
+        Width: =1366
+        ZIndex: =1
+
+    Rectangle1_13 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(255, 255, 255, 0.9)
+        Height: =768
+        Width: =1366
+        ZIndex: =2
+
+    Image3_13 As image:
+        Height: =120
+        Image: =ladol
+        ImagePosition: =ImagePosition.Fill
+        Width: =361
+        ZIndex: =3
+
+    Label1_13 As label:
+        Align: =Align.Right
+        Color: =RGBA(0, 134, 208, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =28
+        Text: =User().FullName
+        X: =1216
+        Y: =57
+        ZIndex: =4
+
+    Image4_13 As image:
+        Fill: =RGBA(0, 134, 208, 1)
+        Height: =54
+        Image: =User().Image
+        Width: =52
+        X: =1314
+        ZIndex: =5
+
+    Label2_7 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 134, 208, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =60
+        Size: =15
+        Text: ="SRN REQUEST FORM"
+        Width: =544
+        X: =388
+        Y: =25
+        ZIndex: =7
+
+    Button1_12 As button:
+        Text: ="Submit"
+        X: =1206
+        Y: =103
+        ZIndex: =8
+
+    Button1_11 As button:
+        Text: ="Reset"
+        X: =1013
+        Y: =103
+        ZIndex: =9
+

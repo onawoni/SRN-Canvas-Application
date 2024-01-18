@@ -1,0 +1,151 @@
+{
+  "0682b401-40dd-4116-82e1-1b5dd4aff3ae": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1670/1.0.1670.3526/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://ladolenterprise-my.sharepoint.com/personal/bcadmin_ladol_com": {
+        "dataSources": {
+          "Ladol Test List": {
+            "tableName": "9652ac0a-a0a0-429c-8464-2880d85b3458"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Ladol Test List"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "0682b401-40dd-4116-82e1-1b5dd4aff3ae"
+  },
+  "32e2beab-2518-4860-8ea8-ad8c330bdd57": {
+    "appActions": [
+      "SendEmailV2"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1669/1.0.1669.3522/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "32e2beab-2518-4860-8ea8-ad8c330bdd57"
+  },
+  "4817e118-ade0-432e-802d-bbf8fa8f8098": {
+    "appActions": [
+      "ListGroupMembers"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Groups",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/office365groups/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365groups",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Groups"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "4817e118-ade0-432e-802d-bbf8fa8f8098"
+  },
+  "a53e7058-42a8-430a-9355-28bee6fa40ce": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read"
+    ],
+    "connectionRef": {
+      "apiTier": "Premium",
+      "displayName": "Dynamics 365 Business Central",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1673/1.0.1673.3557/dynamicssmbsaas/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "BUSINESSCENTRAL,975ef38f-509e-ed11-9889-6045bd8e5184": {
+        "dataSources": {
+          "dimensions (v2.0)": {
+            "tableName": "dimensions,v2.0"
+          },
+          "dimensionValues (v2.0)": {
+            "tableName": "dimensionValues,v2.0"
+          },
+          "items (v2.0)": {
+            "tableName": "items,v2.0"
+          },
+          "jobPlanningLinesSet (snapnetLimited/jobPlanningLinesAPI/v2.0)": {
+            "tableName": "jobPlanningLinesSet,snapnetLimited%252FjobPlanningLinesAPI%252Fv2.0"
+          },
+          "jobTaskSet (snapnetLimited/jobTasks/v2.0)": {
+            "tableName": "jobTaskSet,snapnetLimited%252FjobTasks%252Fv2.0"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "items (v2.0)",
+      "dimensions (v2.0)",
+      "dimensionValues (v2.0)",
+      "jobTaskSet (snapnetLimited/jobTasks/v2.0)",
+      "jobPlanningLinesSet (snapnetLimited/jobPlanningLinesAPI/v2.0)"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "a53e7058-42a8-430a-9355-28bee6fa40ce"
+  },
+  "f710f09c-494c-44dd-bf92-cf17a8e5c3c0": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1670/1.0.1670.3526/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://ladolenterprise-my.sharepoint.com/personal/bcadmin_ladol_com": {
+        "dataSources": {
+          "Inventory Requisition List": {
+            "tableName": "4bbdcaa6-27ef-44bf-9382-c82adff89185"
+          },
+          "Sharepoint Email": {
+            "tableName": "9b2e6729-9deb-4720-b323-ab33bc7971ed"
+          },
+          "SRN Line Items": {
+            "tableName": "e9f01fa3-74f1-4833-8e51-ba84ee0213d5"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Sharepoint Email",
+      "Inventory Requisition List",
+      "SRN Line Items"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "f710f09c-494c-44dd-bf92-cf17a8e5c3c0"
+  }
+}

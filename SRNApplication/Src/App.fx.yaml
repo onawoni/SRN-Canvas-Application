@@ -1,0 +1,26 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |-
+        =Set(varRID, Value(Param("RID")));
+        If(varRID > 0, Set(varNewRequestForm, LookUp('Inventory Requisition List',ID = varRID)); Navigate(ManagersScreen));
+        ClearCollect(colInventory,ShowColumns(Table( Defaults('SRN Line Items')),"InventoryBalance","LineItemID","ItemNumber","ItemName"));
+        Clear(colInventory);
+        Clear(LineItemCollection);
+        ClearCollect(NewDepletedItemsCollection,ShowColumns(Table(Defaults('SRN Line Items')),"ID","New_Inventory"));
+        Clear(NewDepletedItemsCollection);
+        ClearCollect(AllSRNEditItemsCollection,ShowColumns(Table(Defaults('SRN Line Items')),"ID","Quantity"));
+        Clear(AllSRNEditItemsCollection);
+        ClearCollect(ManagerItemUpdate,ShowColumns(Table(Defaults('SRN Line Items')),"ID","Quantity"));
+        Clear(ManagerItemUpdate);
+        ClearCollect(NewReturnedItemsCollection,ShowColumns(Table(Defaults('SRN Line Items')),"ID","New_Inventory"));
+        Clear(NewReturnedItemsCollection);
+    StartScreen: =
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

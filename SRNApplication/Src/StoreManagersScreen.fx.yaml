@@ -1,0 +1,201 @@
+StoreManagersScreen As screen:
+    BackgroundImage: ='New Ladol Images'
+    ImagePosition: =ImagePosition.Fill
+
+    Rectangle1_10 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.7)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    Rectangle2_4 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =120
+        Width: =1366
+        ZIndex: =2
+
+    Rectangle2_9 As rectangle:
+        Fill: =RGBA(0, 94, 146, 1)
+        Height: =45
+        Width: =1366
+        Y: =125
+        ZIndex: =3
+
+    Image3_10 As image:
+        Height: =120
+        Image: =ladol
+        ImagePosition: =ImagePosition.Fill
+        OnSelect: =Navigate(HomeScreen)
+        Width: =361
+        ZIndex: =4
+
+    Label1_10 As label:
+        Color: =RGBA(0, 134, 208, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =28
+        Text: =User().FullName
+        X: =1126
+        Y: =29
+        ZIndex: =5
+
+    Image4_10 As image:
+        BorderColor: =RGBA(116, 116, 116, 1)
+        Fill: =RGBA(116, 116, 116, 1)
+        Height: =54
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =52
+        X: =1298
+        Y: =16
+        ZIndex: =6
+
+    Label2_4 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 134, 208, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =60
+        Size: =15
+        Text: ="STORE MANAGER'S PENDING REQUESTS"
+        Width: =544
+        X: =436
+        Y: =25
+        ZIndex: =7
+
+    "Gallery4_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        DelayItemLoading: =true
+        Height: =587
+        Items: =SortByColumns(Filter('Inventory Requisition List','Approval Status' = "Approved"),"ID", SortOrder.Descending)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateFill: =RGBA(255, 255, 255, 1)
+        TemplatePadding: =0
+        TemplateSize: =72
+        Width: =1366
+        Y: =175
+        ZIndex: =9
+
+        Image11_1 As image:
+            Height: =61
+            Image: ='Hand images'
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            ZIndex: =1
+
+        Title7_1 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: |
+                =30
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.'Staff Name'
+            Tooltip: =Title7_1.Text
+            VerticalAlign: =VerticalAlign.Top
+            Width: =240
+            Wrap: =false
+            X: =Image11_1.X + Image11_1.Width + 24
+            Y: =25
+            ZIndex: =2
+
+        Separator1_1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Subtitle7_4 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: |
+                =30
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.'Approval Status'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title7_1.Width
+            X: =421
+            Y: =25
+            ZIndex: =6
+
+        Subtitle7_5 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: |
+                =30
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.Created
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title7_1.Width
+            X: =696
+            Y: =25
+            ZIndex: =7
+
+        Button8 As button:
+            Height: =30
+            OnSelect: |-
+                =Set(varNewStoreManagerForm,ThisItem);
+                ViewForm(NewStoreManagerForm);
+                Navigate(NewStoreManagerForm)
+            Text: ="View"
+            Width: =120
+            X: =1200
+            Y: =24
+            ZIndex: =9
+
+        Subtitle7_9 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: |
+                =30
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.'Service Type'.Value
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title7_1.Width
+            X: =912
+            Y: =25
+            ZIndex: =10
+
+    Icon1 As icon.Reload:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =35
+        Icon: =Icon.Reload
+        OnSelect: =Refresh('Inventory Requisition List')
+        Width: =35
+        X: =71
+        Y: =130
+        ZIndex: =11
+
+    Icon11 As icon.Home:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =50
+        Icon: =Icon.Home
+        OnSelect: =Navigate(HomeScreen)
+        Width: =50
+        X: =380
+        Y: =29
+        ZIndex: =12
+

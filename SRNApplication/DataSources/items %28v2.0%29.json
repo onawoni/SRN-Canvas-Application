@@ -1,0 +1,40 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+    "CdpRevision": {
+      "BaseUrl": "/v3",
+      "LastChangedTimeString": "2023-12-12T17:36:50.1000000Z",
+      "RevisionNumber": 3
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "baseUnitOfMeasureCode": "Base Unit Of Measure Code",
+      "baseUnitOfMeasureId": "Base Unit Of Measure Id",
+      "blocked": "Blocked",
+      "displayName": "Display Name",
+      "displayName2": "Display Name 2",
+      "generalProductPostingGroupCode": "General Product Posting Group Code",
+      "generalProductPostingGroupId": "General Product Posting Group Id",
+      "gtin": "GTIN",
+      "id": "Id",
+      "inventory": "Inventory",
+      "inventoryPostingGroupCode": "Inventory Posting Group Code",
+      "inventoryPostingGroupId": "Inventory Posting Group Id",
+      "itemCategoryCode": "Item Category Code",
+      "itemCategoryId": "Item Category Id",
+      "lastModifiedDateTime": "Last Modified Date",
+      "number": "No.",
+      "priceIncludesTax": "Price Includes Tax",
+      "taxGroupCode": "Tax Group Code",
+      "taxGroupId": "Tax Group Id",
+      "type": "Type",
+      "unitCost": "Unit Cost",
+      "unitPrice": "Unit Price"
+    },
+    "DatasetName": "BUSINESSCENTRAL,975ef38f-509e-ed11-9889-6045bd8e5184",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "items (v2.0)",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

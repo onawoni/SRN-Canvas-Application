@@ -1,0 +1,26 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+    "CdpRevision": {
+      "BaseUrl": "/v3",
+      "LastChangedTimeString": "2023-12-20T18:12:18.7260000Z",
+      "RevisionNumber": 3
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "Description": "Description",
+      "endDate": "endDate",
+      "jobNo": "jobNo",
+      "jobNo_": "jobNo_",
+      "jobTaskNo": "jobTaskNo",
+      "jobTaskNo_": "jobTaskNo_",
+      "jobTaskType": "jobTaskType",
+      "startDate": "startDate"
+    },
+    "DatasetName": "BUSINESSCENTRAL,975ef38f-509e-ed11-9889-6045bd8e5184",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "jobTaskSet (snapnetLimited/jobTasks/v2.0)",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

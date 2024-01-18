@@ -1,0 +1,93 @@
+Screen1 As screen:
+
+    DataTable1 As dataTable.datatable:
+        BorderStyle: =BorderStyle.Solid
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =418
+        Items: =Office365Groups.ListGroupMembers("cd5c44f0-d1d1-4c0d-bebb-b5a11fc0fb96").value
+        Width: =1122
+        X: =40
+        Y: =288
+        ZIndex: =1
+
+        displayName_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="displayName"
+            FieldName: ="displayName"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =1
+            Text: =ThisItem.displayName
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        givenName_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="givenName"
+            FieldName: ="givenName"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =2
+            Text: =ThisItem.givenName
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =2
+
+        id_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="id"
+            FieldName: ="id"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =3
+            Text: =ThisItem.id
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =3
+
+        mail_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="mail"
+            FieldName: ="mail"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =4
+            Text: =ThisItem.mail
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =4
+
+    Button6 As button:
+        DisplayMode: =If(User().Email in Office365Groups.ListGroupMembers("cd5c44f0-d1d1-4c0d-bebb-b5a11fc0fb96").value.mail,DisplayMode.Disabled,DisplayMode.Edit)
+        OnSelect: =
+        Text: ="Button"
+        X: =60
+        Y: =60
+        ZIndex: =2
+
+    TextInput2 As text:
+        Default: =User().Email
+        X: =628
+        Y: =100
+        ZIndex: =3
+
+    ComboBox1 As combobox:
+        DisplayFields: =["Description"]
+        IsSearchable: =false
+        Items: ='jobTaskSet (snapnetLimited/jobTasks/v2.0)'
+        SearchFields: =["Description"]
+        SearchItems: =[]
+        X: =220
+        Y: =124
+        ZIndex: =4
+

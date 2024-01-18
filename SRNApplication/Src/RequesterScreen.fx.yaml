@@ -1,0 +1,1834 @@
+RequesterScreen As screen:
+    BackgroundImage: ='New Ladol Images'
+    ImagePosition: =ImagePosition.Fill
+    OnVisible: |-
+        =ClearCollect(DepartmenTypeCollections,
+        {Department:"Abuja Office", Code:"ABJ"},
+        {Department:"Administration", Code:"AD"},
+        {Department:"Agency", Code:"AG"},
+        {Department:"Business Development",Code:"BD" },
+        {Department:"Compliance and Risk", Code:"CR"},
+        {Department:"Director", Code:"DIR"},
+        {Department:"Finance and Accounts", Code:"FA"},
+        {Department:"Fabrication and Boat Yard",Code:"FBY"},
+        {Department:"Fleet",Code:"FL"}, 
+        {Department:"First Zenith", Code:"FZ"},
+        {Department:"General Department", Code:"GEN"},
+        {Department:"Administration", Code:"AD"},
+        {Department:"Health, Safty and Environment",Code:"HS"}, 
+        {Department:"Information Technology",Code:"IT" },
+        {Department:"Legal",Code:"LE"},
+        {Department:"Logistics/Operation", Code:"LO"},
+        {Department:"Maintenance", Code:"MA"},
+        {Department:"Marketing and Public Relations",Code:"MP" },
+        {Department:"Opening Balance", Code:"OPB"},
+        {Department:"Planning and Development", Code:"PD"},
+        {Department:"Property and Facilities", Code:"PF"},
+        {Department:"Security and Marine", Code:"SE"},
+        {Department:"Ship Repair Yard", Code:"SRY"},
+        {Department:"Commercial and Procurement", Code:"CP"},
+        {Department:"Projects", Code:"RO"},
+        {Department:"Power Apps", Code:"PA"},
+        {Department:"Automobile Gas Oil",Code:"AGO"},
+        {Department:"Premium Motor Spirit",Code:"PMS"}
+        );
+        ClearCollect(DimensionsCollection,
+        {displayName:"Contractor", Code:"CONTRACTOR"},
+        {displayName:"Customer", Code:" CUSTOMER "},
+        {displayName:"Department", Code:"DEPARTMENT"},
+        {displayName:"Lintercoy", Code:"IINTERCOY"},
+        {displayName:"Site", Code:"SITE"},
+        {displayName:"Staff", Code:" STAFF "},
+        {displayName:"Sub category", Code:" SUB CATEGORY "}
+        );
+        ClearCollect(ItemCategoryCollections,
+        {ItemCategory:"Maintenance", InventoryPostingGroup:"MAINTENANC", Value: ""},
+        {ItemCategory:"Maintenance", InventoryPostingGroup:"MAINTENANC", Value: "CARPENTRY"},
+        {ItemCategory:"Maintenance", InventoryPostingGroup:"MAINTENANC", Value: "MAINT CONSU"},
+        {ItemCategory:"Maintenance", InventoryPostingGroup:"MAINTENANC", Value: "GENERATOR"},
+        {ItemCategory:"Maintenance", InventoryPostingGroup:"MAINTENANC", Value: "PAINTING"},
+        {ItemCategory:"Maintenance", InventoryPostingGroup:"MAINTENANC", Value: "PE"},
+        {ItemCategory:"Maintenance", InventoryPostingGroup:"MAINTENANC", Value: "PLUMBING"},
+        {ItemCategory:"Maintenance", InventoryPostingGroup:"MAINTENANC", Value: "TOOLS"},
+        {ItemCategory:"Property and Facilities", InventoryPostingGroup:"PF STOCK", Value: ""},
+        {ItemCategory:"Property and Facilities", InventoryPostingGroup:"PF STOCK", Value: "FOOD"},
+        {ItemCategory:"Property and Facilities", InventoryPostingGroup:"PF STOCK", Value: "CONSUMABLE"},
+        {ItemCategory:"Property and Facilities", InventoryPostingGroup:"PF STOCK", Value: "PF"},
+        {ItemCategory:"Health, Safty and Environment", InventoryPostingGroup:"HSE", Value: ""},
+        {ItemCategory:"Health, Safty and Environment", InventoryPostingGroup:"HSE", Value: "HSE STOCK"},
+        {ItemCategory:"Administration", InventoryPostingGroup:"ADMIN", Value: ""},
+        {ItemCategory:"Administration", InventoryPostingGroup:"ADMIN", Value: "CONSUMABLE"},
+        {ItemCategory:"Administration", InventoryPostingGroup:"ADMIN", Value: "STATIONERY"},
+        {ItemCategory:"Security and Marine", InventoryPostingGroup:"SEC MARINE", Value: ""},
+        {ItemCategory:"Security and Marine", InventoryPostingGroup:"SEC MARINE", Value: "SPAREPART"},
+        {ItemCategory:"Security and Marine", InventoryPostingGroup:"SEC MARINE", Value: "CONSUMABLE"},
+        {ItemCategory:"Fleet", InventoryPostingGroup:"FLEET STOR", Value: ""},
+        {ItemCategory:"Fleet", InventoryPostingGroup:"FLEET STOR", Value: "SPAREPART"},
+        {ItemCategory:"Fleet", InventoryPostingGroup:"FLEET STOR", Value: "CONSUMABLE"},
+        {ItemCategory:"Fabrication and Boat Yard", InventoryPostingGroup:"FBY", Value: ""},
+        {ItemCategory:"Fabrication and Boat Yard", InventoryPostingGroup:"FBY", Value: "MARINE"},
+        {ItemCategory:"Fabrication and Boat Yard", InventoryPostingGroup:"FBY", Value: "MECH"},
+        {ItemCategory:"Fabrication and Boat Yard", InventoryPostingGroup:"FBY", Value: "FBY"},
+        {ItemCategory:"Fabrication and Boat Yard", InventoryPostingGroup:"FBY", Value: "WELDING"},
+        {ItemCategory:"Information Technology", InventoryPostingGroup:"INFO TECH", Value: ""},
+        {ItemCategory:"Information Technology", InventoryPostingGroup:"INFO TECH", Value: "HARDWARE"},
+        {ItemCategory:"Information Technology", InventoryPostingGroup:"INFO TECH", Value: "IT CONSUM"},
+        {ItemCategory:"Information Technology", InventoryPostingGroup:"INFO TECH", Value: "SOFTWARE"},
+        {ItemCategory:"Automobile Gas Oil", InventoryPostingGroup:"AGO", Value: ""},
+        {ItemCategory:"Automobile Gas Oil", InventoryPostingGroup:"AGO", Value: "AGO"},
+        {ItemCategory:"Premium Motor Spirit", InventoryPostingGroup:"PMS", Value: ""},
+        {ItemCategory:"Premium Motor Spirit", InventoryPostingGroup:"PMS", Value: "PMS"}
+        
+        );
+        ClearCollect(ProjectTypeCollections,
+        {ProjectType: "", Value: ""},
+        {ProjectType: "Client", Value: "CL"},
+        {ProjectType: "Project", Value: "PR"},
+        {ProjectType: "Base", Value: "BA"})
+
+    Rectangle1 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.8)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    Rectangle2 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Width: =1366
+        ZIndex: =2
+
+    Image3 As image:
+        Image: =ladol
+        ImagePosition: =ImagePosition.Fill
+        OnSelect: =Navigate(HomeScreen)
+        Width: =327
+        ZIndex: =3
+
+    Label1 As label:
+        Align: =Align.Right
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: =DisplayMode.View
+        FontWeight: =FontWeight.Bold
+        Height: =28
+        Text: =User().FullName
+        X: =1094
+        Y: =25
+        ZIndex: =4
+
+    Image4 As image:
+        Fill: =RGBA(0, 134, 208, 1)
+        Height: =54
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =52
+        X: =1282
+        Y: =16
+        ZIndex: =5
+
+    RequestForm As form:
+        DataSource: ='Inventory Requisition List'
+        DefaultMode: =FormMode.New
+        Height: =628
+        NumberOfColumns: =2
+        OnSuccess: |-
+            =Set(varRequestFormID, RequestForm.LastSubmit.ID);
+            Set(varNewRequestForm, RequestForm.LastSubmit);
+            Office365Outlook.SendEmailV2("bcadmin@ladol.com", "New SRN Request", "Hello Line Manager, <br> You have a new SRN request with the following details: <br> <b> Staff Name: </b> "&varNewRequestForm.'Staff Name'&" <br> <b> Department: </b> "&varNewRequestForm.'Department Type'&" <br> <b> Item: </b> "&varNewRequestForm.Items&" <br> <b> Quantity:</b> "&varNewRequestForm.Quantity&" <br> Please click on this <a href='https://apps.powerapps.com/play/184da5aa-b3c6-44a9-85a1-0cf31e225c47
+            ?RID="&varRequestFormID&"'> link <a/> for details and approval");
+        Width: =1366
+        Y: =97
+        ZIndex: =6
+
+        "'Department Code_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="DepartmentCode"
+            Default: =ThisItem.'Department Code'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"DepartmentCode")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "DepartmentCode")
+            Required: =false
+            Update: =Departmentcode.Text
+            Width: =683
+            X: =1
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey17 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            Departmentcode As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Concat(DepartmentComboBox.SelectedItems,Code,"; ")
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey17.Y + DataCardKey17.Height + 5
+                ZIndex: =2
+
+            ErrorMessage17 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =Departmentcode.Y + Departmentcode.Height
+                ZIndex: =3
+
+            StarVisible17 As label:
+                Align: =Align.Center
+                Height: =DataCardKey17.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey17.Y
+                ZIndex: =4
+
+        "'Project Type_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ProjectType"
+            Default: =ThisItem.'Project Type'
+            DisplayMode: =If(DepartmentComboBox.Selected.Department = "Premium Motor Spirit" ||DepartmentComboBox.Selected.Department = "Automobile Gas Oil" , DisplayMode.Edit,DisplayMode.Disabled)
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ProjectType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =98
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ProjectType")
+            Required: =false
+            Update: =ProjectTypeDropdown.Selected.Value
+            Width: =683
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey20 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage20 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =ProjectTypeDropdown.Y + ProjectTypeDropdown.Height
+                ZIndex: =3
+
+            StarVisible20 As label:
+                Align: =Align.Center
+                Height: =DataCardKey20.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey20.Y
+                ZIndex: =4
+
+            ProjectTypeDropdown As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Items: =ProjectTypeCollections
+                Width: =623
+                X: =30
+                Y: =40
+                ZIndex: =5
+
+            Button11 As button:
+                Height: =15
+                OnSelect: =Reset(ProjectTypeDropdown)
+                Text: ="Button"
+                Visible: =false
+                X: =130
+                Y: =90
+                ZIndex: =6
+
+        "'Item Category_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ItemCategory"
+            Default: =ThisItem.'Item Category'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ItemCategory")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ItemCategory")
+            Required: =false
+            Update: =ItemCategoryDropdown.Selected.Value
+            Width: =683
+            X: =1
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey16 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage16 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =ItemCategoryDropdown.Y + ItemCategoryDropdown.Height
+                ZIndex: =3
+
+            StarVisible16 As label:
+                Align: =Align.Center
+                Height: =DataCardKey16.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey16.Y
+                ZIndex: =4
+
+            ItemCategoryDropdown As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Items: =Filter(ItemCategoryCollections,ItemCategory= DepartmentComboBox.Selected.Department)
+                OnChange: |-
+                    =If(
+                        ItemCategoryDropdown.Selected.Value = "CARPENTRY",
+                        Set(
+                            varInventory,
+                            "CARPENTRY"
+                        ),
+                        If(
+                            ItemCategoryDropdown.Selected.Value = "MAINT CONSU",
+                            Set(
+                                varInventory,
+                                "MAINT CONSU"
+                            ),
+                            If(
+                                ItemCategoryDropdown.Selected.Value = "GENERATOR",
+                                Set(
+                                    varInventory,
+                                    "GENERATOR"
+                                ),
+                                If(
+                                    ItemCategoryDropdown.Selected.Value = "PAINTING",
+                                    Set(
+                                        varInventory,
+                                        "PAINTING"
+                                    ),
+                                    If(
+                                        ItemCategoryDropdown.Selected.Value = "PE",
+                                        Set(
+                                            varInventory,
+                                            "PE"
+                                        ),
+                                        If(
+                                            ItemCategoryDropdown.Selected.Value = "TOOLS",
+                                            Set(
+                                                varInventory,
+                                                "TOOLS"
+                                            ),
+                                            If(
+                                                ItemCategoryDropdown.Selected.Value = "PLUMBING",
+                                                Set(
+                                                    varInventory,
+                                                    "PLUMBING"
+                                                ),
+                                                If(
+                                                    ItemCategoryDropdown.Selected.Value = "PF",
+                                                    Set(
+                                                        varInventory,
+                                                        "PF"
+                                                    ),
+                                                    If(
+                                                        ItemCategoryDropdown.Selected.Value = "FOOD",
+                                                        Set(
+                                                            varInventory,
+                                                            "FOOD"
+                                                        ),
+                                                        If(
+                                                            ItemCategoryDropdown.Selected.Value = "CONSUMABLE",
+                                                            Set(
+                                                                varInventory,
+                                                                "CONSUMABLE"
+                                                            ),
+                                                            If(
+                                                                ItemCategoryDropdown.Selected.Value = "HSE STOCK",
+                                                                Set(
+                                                                    varInventory,
+                                                                    "HSE STOCK"
+                                                                ),
+                                                                If(
+                                                                    ItemCategoryDropdown.Selected.Value = "CONSUMABLE",
+                                                                    Set(
+                                                                        varInventory,
+                                                                        "CONSUMABLE"
+                                                                    ),
+                                                                    If(
+                                                                        ItemCategoryDropdown.Selected.Value = "STATIONERY",
+                                                                        Set(
+                                                                            varInventory,
+                                                                            "STATIONERY"
+                                                                        ),
+                                                                        If(
+                                                                            ItemCategoryDropdown.Selected.Value = "FBY",
+                                                                            Set(
+                                                                                varInventory,
+                                                                                "FBY"
+                                                                            ),
+                                                                            If(
+                                                                                ItemCategoryDropdown.Selected.Value = "SPAREPART",
+                                                                                Set(
+                                                                                    varInventory,
+                                                                                    "SPAREPART"
+                                                                                ),
+                                                                                If(
+                                                                                    ItemCategoryDropdown.Selected.Value = "CONSUMABLE",
+                                                                                    Set(
+                                                                                        varInventory,
+                                                                                        "CONSUMABLE"
+                                                                                    ),
+                                                                                    If(
+                                                                                        ItemCategoryDropdown.Selected.Value = "SPAREPART",
+                                                                                        Set(
+                                                                                            varInventory,
+                                                                                            "SPAREPART"
+                                                                                        ),
+                                                                                        If(
+                                                                                            ItemCategoryDropdown.Selected.Value = "CONSUMABLE",
+                                                                                            Set(
+                                                                                                varInventory,
+                                                                                                "CONSUMABLE"
+                                                                                            ),
+                                                                                            If(
+                                                                                                ItemCategoryDropdown.Selected.Value = "MECH",
+                                                                                                Set(
+                                                                                                    varInventory,
+                                                                                                    "MECH"
+                                                                                                ),
+                                                                                                If(
+                                                                                                    ItemCategoryDropdown.Selected.Value = "MARINE",
+                                                                                                    Set(
+                                                                                                        varInventory,
+                                                                                                        "MARINE"
+                                                                                                    ),
+                                                                                                    If(
+                                                                                                        ItemCategoryDropdown.Selected.Value = "IT CONSUM",
+                                                                                                        Set(
+                                                                                                            varInventory,
+                                                                                                            "IT CONSUM"
+                                                                                                        ),
+                                                                                                       If( ItemCategoryDropdown.Selected.Value = "HARDWARE",
+                                                                                                        Set(
+                                                                                                            varInventory,
+                                                                                                            "HARDWARE"
+                                                                                                        ),
+                                                                                                        If(
+                                                                                                            ItemCategoryDropdown.Selected.Value = "SOFTWARE",
+                                                                                                            Set(
+                                                                                                                varInventory,
+                                                                                                                "SOFTWARE"
+                                                                                                            ),
+                                                                                                            If(
+                                                                                                                ItemCategoryDropdown.Selected.Value = "WELDING",
+                                                                                                                Set(
+                                                                                                                    varInventory,
+                                                                                                                    "WELDING"
+                                                                                                                ),
+                                                                                                                Set(
+                                                                                                                    varInventory,
+                                                                                                                    ""
+                                                                                                                ),
+                                                                                                            
+                                                                                                            If(
+                                                                                                                ItemCategoryDropdown.Selected.Value = "AGO",
+                                                                                                                Set(
+                                                                                                                    varInventory,
+                                                                                                                    "AGO"
+                                                                                                                ),
+                                                                                                                Set(
+                                                                                                                    varInventory,
+                                                                                                                    ""
+                                                                                                                ),
+                                                                                                            
+                                                                                                            If(
+                                                                                                                ItemCategoryDropdown.Selected.Value = "PMS",
+                                                                                                                Set(
+                                                                                                                    varInventory,
+                                                                                                                    "PMS"
+                                                                                                                ),
+                                                                                                                Set(
+                                                                                                                    varInventory,
+                                                                                                                    ""
+                                                                                                                )
+                                                                                                            
+                                                                                                        )
+                                                                                                    )
+                                                                                                )
+                                                                                            )
+                                                                                        )
+                                                                                    )
+                                                                                )
+                                                                            )
+                                                                        )
+                                                                    )
+                                                                )
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )))));
+                    //If(ItemCategoryDropdown.Selected.Value,Set(VarItemloading,true));
+                    Set(
+                        VarItemloading,
+                        !IsBlank(ItemCategoryDropdown.Selected.Value)
+                    )
+                Width: =623
+                X: =30
+                Y: =40
+                ZIndex: =5
+
+        "'PR Number_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="PRNumber"
+            Default: =ThisItem.'PR Number'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"PRNumber")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =183
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "PRNumber")
+            Required: =false
+            Update: =PRComboBox.Selected.'Request ID'
+            Width: =683
+            X: =1
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey14 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage14 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =PRComboBox.Y + PRComboBox.Height
+                ZIndex: =3
+
+            StarVisible14 As label:
+                Align: =Align.Center
+                Height: =DataCardKey14.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey14.Y
+                ZIndex: =4
+
+            PRComboBox As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["RequestID"]
+                Items: ='Ladol Test List'
+                SearchFields: =["RequestID"]
+                SearchItems: =Search('Ladol Test List',PRComboBox.SearchText,"RequestID")
+                SelectMultiple: =false
+                Width: =623
+                X: =30
+                Y: =40
+                ZIndex: =5
+
+        "'SRN Number_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="SRNNumber"
+            Default: =ThisItem.'SRN Number'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"SRNNumber")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "SRNNumber")
+            Required: =false
+            Update: =RequestNo.Text
+            Visible: =false
+            Width: =683
+            X: =1
+            Y: =7
+            ZIndex: =1
+
+            DataCardKey13 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            RequestNo As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =If(RequestForm.Mode=FormMode.New, "SRN" &"-" & Departmentcode.Text & ProjectTypeDropdown.Selected.Value & First(Sort('Inventory Requisition List',ID,SortOrder.Descending)).ID + 1 ,Parent.Default)
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey13.Y + DataCardKey13.Height + 5
+                ZIndex: =2
+
+            ErrorMessage13 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =RequestNo.Y + RequestNo.Height
+                ZIndex: =3
+
+            StarVisible13 As label:
+                Align: =Align.Center
+                Height: =DataCardKey13.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey13.Y
+                ZIndex: =4
+
+        "'Staff Name_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Title"
+            Default: =ThisItem.'Staff Name'
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"Title")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "Title")
+            Required: =false
+            Update: =DataCardValue1.Text
+            Width: =683
+            X: =0
+            Y: =0
+            ZIndex: =7
+
+            DataCardKey1 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =User().FullName
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey1.Y + DataCardKey1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage1 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue1.Y + DataCardValue1.Height
+                ZIndex: =3
+
+            StarVisible1 As label:
+                Align: =Align.Center
+                Height: =DataCardKey1.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey1.Y
+                ZIndex: =4
+
+        "'Staff Email_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="StaffEmail"
+            Default: =ThisItem.'Staff Email'
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"StaffEmail")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "StaffEmail")
+            Required: =false
+            Update: =DataCardValue7.Text
+            Width: =683
+            X: =1
+            Y: =0
+            ZIndex: =7
+
+            DataCardKey7 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue7 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =User().Email
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey7.Y + DataCardKey7.Height + 5
+                ZIndex: =2
+
+            ErrorMessage7 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue7.Y + DataCardValue7.Height
+                ZIndex: =3
+
+            StarVisible7 As label:
+                Align: =Align.Center
+                Height: =DataCardKey7.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey7.Y
+                ZIndex: =4
+
+        "'Department Type_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="DepartmentType"
+            Default: =ThisItem.'Department Type'
+            DisplayMode: =DisplayMode.Edit
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"DepartmentType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "DepartmentType")
+            Required: =true
+            Update: =DepartmentComboBox.Selected.Department
+            Width: =683
+            X: =0
+            Y: =1
+            ZIndex: =7
+
+            DataCardKey10 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage10 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DepartmentComboBox.Y + DepartmentComboBox.Height
+                ZIndex: =3
+
+            StarVisible10 As label:
+                Align: =Align.Center
+                Height: =DataCardKey10.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey10.Y
+                ZIndex: =4
+
+            DepartmentComboBox As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["Department"]
+                FontWeight: =FontWeight.Lighter
+                Items: =DepartmenTypeCollections
+                OnChange: =If(DepartmentComboBox.Selected.Department <> "Automobile Gas Oil" Or DepartmentComboBox.Selected.Department <> "Premium Motor Spirit", Select(Button11))
+                SearchFields: =["Code"]
+                SearchItems: =Search(DepartmenTypeCollections,DepartmentComboBox.SearchText,"Code")
+                SelectMultiple: =false
+                Width: =623
+                X: =30
+                Y: =40
+                ZIndex: =5
+
+        Items_DataCard1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Items"
+            Default: =ThisItem.Items
+            DisplayMode: =If( IsBlank(ItemCategoryDropdown.Selected),DisplayMode.Disabled,DisplayMode.Edit)
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"Items")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =130
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "Items")
+            Required: =false
+            Update: =ItmesComboBox.Selected.'Display Name'
+            Width: =683
+            X: =0
+            Y: =3
+            ZIndex: =7
+
+            DataCardKey2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =ItmesComboBox.Y + ItmesComboBox.Height
+                ZIndex: =3
+
+            StarVisible2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey2.Y
+                ZIndex: =4
+
+            ItmesComboBox As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                IsSearchable: =false
+                Items: |-
+                    =Filter('items (v2.0)','Item Category Code'= varInventory And 'Inventory Posting Group Code'=ItemCategoryDropdown.Selected.InventoryPostingGroup )
+                    
+                    //Filter('items (v2.0)','Inventory Posting Group Code'= varInventory)
+                Reset: =true
+                SearchFields: =["number"]
+                SearchItems: =[]
+                Width: =623
+                X: =30
+                Y: =40
+                ZIndex: =5
+
+            Reset_ItmesComboBox As button:
+                OnSelect: =Reset(ItmesComboBox)
+                Text: ="Button"
+                Visible: =false
+                X: =58
+                Y: =80
+                ZIndex: =6
+
+            Button4 As button:
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                HoverFill: |
+                    =ColorFade(RGBA(255, 255, 255, 1), -20%)
+                    //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                OnSelect: |-
+                    =UpdateContext({AddItems:true});
+                    ForAll(ItmesComboBox.SelectedItems,
+                    Collect(
+                        LineItemCollection,
+                        {
+                            Coll_Item_Name:'Display Name',
+                            Coll_Item_No:'No.',
+                            Coll_Item_Inventory:Inventory,
+                            Coll_Item_Quantity:"",
+                            Coll_Item_Description:""
+                        }
+                    ));
+                    Select(Reset_ItmesComboBox);
+                Text: ="+ Add Line Items"
+                Underline: =true
+                Width: =220
+                X: =200
+                Y: =96
+                ZIndex: =7
+
+        "'Service Type_DataCard1' As typedDataCard.comboBoxEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ServiceType"
+            Default: =ThisItem.'Service Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ServiceType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue4.Selected
+            Width: =683
+            X: =1
+            Y: =3
+            ZIndex: =7
+
+            DataCardKey4 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue4 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                Items: =Choices([@'Inventory Requisition List'].'Service Type')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Choices('Inventory Requisition List'.'Service Type',DataCardValue4.SearchText)
+                SelectionFill: =RGBA(255, 255, 255, 1)
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey4.Y + DataCardKey4.Height + 5
+                ZIndex: =2
+
+            ErrorMessage4 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue4.Y + DataCardValue4.Height
+                ZIndex: =3
+
+            StarVisible4 As label:
+                Align: =Align.Center
+                Height: =DataCardKey4.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey4.Y
+                ZIndex: =4
+
+        "'Expected Date_DataCard1' As typedDataCard.dateEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ExpectedDate"
+            Default: =ThisItem.'Expected Date'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ExpectedDate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =DataCardValue15.SelectedDate
+            Width: =683
+            X: =0
+            Y: =4
+            ZIndex: =7
+
+            DataCardKey15 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue15 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey15.Y + DataCardKey15.Height + 5
+                ZIndex: =2
+
+            ErrorMessage15 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue15.Y + DataCardValue15.Height
+                ZIndex: =3
+
+            StarVisible15 As label:
+                Align: =Align.Center
+                Height: =DataCardKey15.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey15.Y
+                ZIndex: =4
+
+        "'Issue Description_DataCard' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="IssueDescription"
+            Default: =ThisItem.'Issue Description'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"IssueDescription")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =212
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "IssueDescription")
+            Required: =true
+            Update: =DataCardValue5.Text
+            Width: =1366
+            X: =0
+            Y: =5
+            ZIndex: =7
+
+            DataCardKey5 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue5 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Clear: =true
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                EnableSpellCheck: =true
+                Height: =152
+                HintText: ="Discribe the issue"
+                MaxLength: =Parent.MaxLength
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =1325
+                X: =30
+                Y: =43
+                ZIndex: =2
+
+            ErrorMessage5 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue5.Y + DataCardValue5.Height
+                ZIndex: =3
+
+            StarVisible5 As label:
+                Align: =Align.Center
+                Height: =DataCardKey5.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey5.Y
+                ZIndex: =4
+
+        "'Store Manager_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="StoreManager"
+            Default: =ThisItem.'Store Manager'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"StoreManager")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "StoreManager")
+            Required: =false
+            Update: =DataCardValue9.Text
+            Visible: =false
+            Width: =683
+            X: =0
+            Y: =6
+            ZIndex: =7
+
+            DataCardKey9 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue9 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey9.Y + DataCardKey9.Height + 5
+                ZIndex: =2
+
+            ErrorMessage9 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue9.Y + DataCardValue9.Height
+                ZIndex: =3
+
+            StarVisible9 As label:
+                Align: =Align.Center
+                Height: =DataCardKey9.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey9.Y
+                ZIndex: =4
+
+        "'Item Inventory_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ItemInventory"
+            Default: =ThisItem.'Item Inventory'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ItemInventory")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ItemInventory")
+            Required: =false
+            Update: =DataCardValue3.Text
+            Visible: =false
+            Width: =683
+            X: =1
+            Y: =6
+            ZIndex: =7
+
+            DataCardKey3 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue3 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Concat(ItmesComboBox.SelectedItems,Inventory)
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey3.Y + DataCardKey3.Height + 5
+                ZIndex: =2
+
+            ErrorMessage3 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue3.Y + DataCardValue3.Height
+                ZIndex: =3
+
+            StarVisible3 As label:
+                Align: =Align.Center
+                Height: =DataCardKey3.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey3.Y
+                ZIndex: =4
+
+        "'Approval Status_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ApprovalStatus"
+            Default: =ThisItem.'Approval Status'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"ApprovalStatus")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "ApprovalStatus")
+            Required: =false
+            Update: =DataCardValue8.Text
+            Visible: =false
+            Width: =683
+            X: =0
+            Y: =7
+            ZIndex: =7
+
+            DataCardKey8 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue8 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: ="Pending"
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey8.Y + DataCardKey8.Height + 5
+                ZIndex: =2
+
+            ErrorMessage8 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue8.Y + DataCardValue8.Height
+                ZIndex: =3
+
+            StarVisible8 As label:
+                Align: =Align.Center
+                Height: =DataCardKey8.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey8.Y
+                ZIndex: =4
+
+        Department_DataCard1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Department"
+            Default: =ThisItem.Department
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Inventory Requisition List'],DataSourceInfo.DisplayName,"Department")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Inventory Requisition List'], DataSourceInfo.MaxLength, "Department")
+            Required: =false
+            Update: =DepartmentDropdown.Selected.displayName
+            Visible: =false
+            Width: =683
+            X: =0
+            Y: =8
+            ZIndex: =7
+
+            DataCardKey6 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ErrorMessage6 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DepartmentDropdown.Y + DepartmentDropdown.Height
+                ZIndex: =3
+
+            StarVisible6 As label:
+                Align: =Align.Center
+                Height: =DataCardKey6.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey6.Y
+                ZIndex: =4
+
+            DepartmentDropdown As dropdown:
+                Default: ="Department"
+                Items: =DimensionsCollection
+                X: =40
+                Y: =40
+                ZIndex: =5
+
+    Label2 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =60
+        Size: =15
+        Text: ="SRN REQUEST FORM"
+        Width: =544
+        X: =388
+        Y: =25
+        ZIndex: =7
+
+    Button1 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: |-
+            =If(
+                IsBlank(DepartmentComboBox.Selected) || IsBlank(DataCardValue4.SelectedItems) || IsBlank(DataCardValue5.Text),
+                DisplayMode.Disabled,
+                DisplayMode.Edit
+            )
+        Fill: =RGBA(255, 255, 255, 1)
+        OnSelect: |
+            =//SubmitForm(RequestForm);
+            Set(
+                varRecord,
+                ( Patch(
+                    'Inventory Requisition List',
+                    Defaults('Inventory Requisition List'),
+                    {
+                        'Staff Name': DataCardValue1.Text,
+                        'Staff Email': DataCardValue7.Text,
+                        'Department Type': DepartmentComboBox.Selected.Department,
+                        'Service Type': DataCardValue4.Selected,
+                        'Expected Date': DataCardValue15.SelectedDate,
+                        'Issue Description': DataCardValue5.Text,
+                        'SRN Number':RequestNo.Text,
+                        'PR Number': PRComboBox.Selected.'Request ID',
+                        'Project Type':ProjectTypeDropdown.Selected.ProjectType
+                    }
+                ))
+            );
+            ForAll(
+                LineItemCollection,
+                Patch(
+                    'SRN Line Items',
+                    Defaults('SRN Line Items'),
+                    {
+                        'Item Name': Coll_Item_Name,
+                        'Item Number': Coll_Item_No,
+                        'Inventory Balance': Coll_Item_Inventory,
+                        Quantity: Coll_Item_Quantity,
+                        Description:Coll_Item_Description,
+                        'LineItem ID': varRecord.ID
+                    }
+                )
+            );
+            ResetForm(RequestForm);
+            Clear(LineItemCollection);
+            Navigate(ReqSuccessScreen)
+        Text: ="Submit"
+        X: =1190
+        Y: =728
+        ZIndex: =8
+
+    Button1_1 As button:
+        OnSelect: =ResetForm(RequestForm)
+        Text: ="Reset"
+        X: =997
+        Y: =728
+        ZIndex: =9
+
+    Label11 As label:
+        Text: =
+        X: =824
+        Y: =35
+        ZIndex: =10
+
+    Icon13 As icon.Home:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =50
+        Icon: =Icon.Home
+        OnSelect: |-
+            =Navigate(HomeScreen);
+            Clear(LineItemCollection)
+        Width: =50
+        X: =424
+        Y: =22
+        ZIndex: =11
+
+    Container2 As groupContainer.manualLayoutContainer:
+        Height: =768
+        Visible: =AddItems
+        Width: =1365
+        ZIndex: =12
+
+        Image2 As image:
+            Height: =668
+            Image: ='New Ladol Images'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1363
+            X: =2
+            Y: =100
+            ZIndex: =1
+
+        Rectangle17 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.5)
+            Height: =668
+            Width: =1363
+            X: =2
+            Y: =100
+            ZIndex: =2
+
+        Line_Item_Gallery As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =564
+            Items: =LineItemCollection
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: =RGBA(255, 255, 255, 1)
+            TemplateSize: =59
+            Width: =1348
+            X: =2
+            Y: =204
+            ZIndex: =3
+
+            TextInput1 As text:
+                Color: =RGBA(0, 94, 146, 1)
+                Default: =ThisItem.Coll_Item_Name
+                DisplayMode: =DisplayMode. View
+                FontWeight: =FontWeight.Bold
+                Height: =36
+                OnSelect: =Select(Parent)
+                Width: =550
+                X: =3
+                Y: =10
+                ZIndex: =1
+
+            TextInput1_1 As text:
+                Color: =RGBA(0, 94, 146, 1)
+                Default: =ThisItem.Coll_Item_No
+                DisplayMode: =DisplayMode.View
+                FontWeight: =FontWeight.Bold
+                Height: =33
+                OnSelect: =Select(Parent)
+                Width: =200
+                X: =370
+                Y: =10
+                ZIndex: =2
+
+            Quantity_TextInput As text:
+                BorderStyle: =BorderStyle.Dotted
+                Color: =RGBA(0, 94, 146, 1)
+                Default: =ThisItem.Coll_Item_Quantity
+                FontWeight: =FontWeight.Bold
+                Format: =TextFormat.Number
+                Height: =36
+                OnChange: =
+                OnSelect: =Select(Parent)
+                Tooltip: ="Add Quantity"
+                Width: =200
+                X: =948
+                Y: =8
+                ZIndex: =3
+
+            TextInput1_3 As text:
+                Default: =ThisItem.Coll_Item_Inventory
+                Height: =33
+                OnSelect: =Select(Parent)
+                Visible: =false
+                Width: =31
+                X: =399
+                Y: =6
+                ZIndex: =4
+
+            Icon5 As icon.Cancel:
+                Color: =RGBA(0, 94, 146, 1)
+                Height: =39
+                Icon: =Icon.Cancel
+                OnSelect: =Remove(LineItemCollection,ThisItem)
+                Tooltip: ="Remove this item"
+                Width: =50
+                X: =1183
+                Y: =8
+                ZIndex: =5
+
+            Icon6 As icon.Save:
+                Color: =RGBA(0, 94, 146, 1)
+                Height: =36
+                Icon: =Icon.Save
+                OnSelect: |
+                    =//UpdateIf(LineItemCollection,Item_No = Item_No, {Item_Quantity:Quantity_TextInput.Text})
+                    Patch(LineItemCollection,Line_Item_Gallery.Selected,{Coll_Item_Quantity:Quantity_TextInput.Text,Coll_Item_Description:Description_TextInput.Text});
+                    UpdateContext({LineItemNotification: true})
+                    //Notify("Line Item Saved",NotificationType.Success);
+                Tooltip: ="Save this Item"
+                Width: =44
+                X: =1260
+                Y: =8
+                ZIndex: =6
+
+            Description_TextInput As text:
+                BorderStyle: =BorderStyle.Dotted
+                Color: =RGBA(0, 94, 146, 1)
+                Default: =ThisItem.Coll_Item_Description
+                FontWeight: =FontWeight.Bold
+                Height: =36
+                OnChange: =
+                OnSelect: =Select(Parent)
+                Tooltip: ="Add Quantity"
+                Width: =350
+                X: =580
+                Y: =8
+                ZIndex: =7
+
+        Rectangle18 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Width: =1366
+            X: =2
+            Y: =105
+            ZIndex: =4
+
+        Icon9 As icon.Cancel:
+            Color: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({AddItems:false})
+            Width: =37
+            X: =1285
+            Y: =109
+            ZIndex: =5
+
+        "'LineItem Heading' As group":
+            Height: =5
+            Width: =5
+            X: =-449
+            Y: =-416
+            ZIndex: =9
+
+            Rectangle7 As rectangle:
+                Fill: =RGBA(0, 94, 146, 1)
+                Height: =45
+                Width: =1366
+                Y: =160
+                ZIndex: =6
+
+            Label10 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Item"
+                X: =86
+                Y: =165
+                ZIndex: =7
+
+            Label10_1 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Item No"
+                X: =400
+                Y: =165
+                ZIndex: =8
+
+            Label10_2 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Quantity"
+                Width: =112
+                X: =999
+                Y: =165
+                ZIndex: =9
+
+            Label10_3 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Remove"
+                Width: =99
+                X: =1156
+                Y: =165
+                ZIndex: =10
+
+            Label10_4 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Save"
+                Width: =77
+                X: =1275
+                Y: =165
+                ZIndex: =11
+
+        Button5_1 As button:
+            Color: =RGBA(0, 94, 146, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            OnSelect: =Clear(LineItemCollection)
+            Text: ="Clear Line Items"
+            Width: =222
+            X: =547
+            Y: =110
+            ZIndex: =12
+
+        LineItemNotification As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =14
+
+            Rectangle13 As rectangle:
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Visible: =LineItemNotification
+                Width: =637
+                X: =332
+                Y: =112
+                ZIndex: =13
+
+            Label4 As label:
+                Align: =Align.Center
+                Color: =RGBA(0, 94, 146, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: ="Line Item Saved"
+                Visible: =LineItemNotification
+                Width: =404
+                X: =456
+                Y: =112
+                ZIndex: =14
+
+        LineItemNotificationTimer As timer:
+            Duration: =2000
+            OnTimerEnd: |-
+                =UpdateContext({LineItemNotification: false})
+            OnTimerStart: =
+            Start: =LineItemNotification
+            Visible: =false
+            X: =40
+            Y: =40
+            ZIndex: =15
+
+        Label10_5 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Text: ="Description"
+            Width: =120
+            X: =704
+            Y: =165
+            ZIndex: =16
+
+    Label15 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =30
+        Text: =RequestNo.Text
+        X: =582
+        Y: =65
+        ZIndex: =13
+

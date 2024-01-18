@@ -1,0 +1,195 @@
+AllSRNScreen As screen:
+    BackgroundImage: ='New Ladol Images'
+    ImagePosition: =ImagePosition.Fill
+
+    Rectangle1_12 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.7)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    Rectangle2_6 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =120
+        Width: =1366
+        ZIndex: =2
+
+    Rectangle2_11 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        Width: =1366
+        Y: =125
+        ZIndex: =3
+
+    Image3_12 As image:
+        Height: =120
+        Image: =ladol
+        ImagePosition: =ImagePosition.Fill
+        OnSelect: =Navigate(HomeScreen)
+        Width: =361
+        ZIndex: =4
+
+    Label1_12 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =28
+        Text: =User().FullName
+        X: =1152
+        Y: =25
+        ZIndex: =5
+
+    Image4_12 As image:
+        BorderColor: =RGBA(116, 116, 116, 1)
+        Fill: =RGBA(116, 116, 116, 1)
+        Height: =54
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =52
+        X: =1290
+        Y: =16
+        ZIndex: =6
+
+    Icon19 As icon.Home:
+        Height: =50
+        Icon: =Icon.Home
+        OnSelect: =Navigate(HomeScreen)
+        Width: =50
+        X: =414
+        Y: =28
+        ZIndex: =7
+
+    Label2_6 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =60
+        Size: =15
+        Text: ="ALL SRN REQUESTS"
+        Width: =350
+        X: =550
+        Y: =25
+        ZIndex: =8
+
+    "Gallery4_2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        DelayItemLoading: =true
+        Height: =608
+        Items: =SortByColumns(Filter('Inventory Requisition List', 'Staff Email' = User().Email And ('Approval Status' = "Pending" || 'Approval Status'= "Submitted" || 'Approval Status' = "Rejected" || 'Approval Status' = "Approved" || 'Approval Status' = "Depleted")),"Created",SortOrder.Descending)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateFill: =RGBA(255, 255, 255, 1)
+        TemplatePadding: =0
+        TemplateSize: =74
+        Width: =1366
+        Y: =180
+        ZIndex: =9
+
+        Image11_2 As image:
+            Height: =67
+            Image: ='Hand images'
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            ZIndex: =1
+
+        Title7_2 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =33
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.'Staff Name'
+            Tooltip: =Title7_2.Text
+            VerticalAlign: =VerticalAlign.Top
+            Width: =214
+            Wrap: =false
+            X: =Image11_2.X + Image11_2.Width + 24
+            Y: =30
+            ZIndex: =2
+
+        Subtitle7_7 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.Items
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title7_2.Width
+            X: =Title7_2.X
+            Y: =Title7_2.Y + Title7_2.Height + 4
+            ZIndex: =3
+
+        Separator1_2 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Subtitle7_6 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.'Approval Status'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title7_2.Width
+            X: =453
+            Y: =30
+            ZIndex: =6
+
+        Subtitle7_8 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =Text(ThisItem.Created,"dd/mm/yyy")
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title7_2.Width
+            X: =709
+            Y: =30
+            ZIndex: =7
+
+        Button9 As button:
+            Fill: =RGBA(0, 94, 146, 1)
+            OnSelect: |-
+                =Set(varAllSRNForm, ThisItem);
+                ViewForm(AllSRNForm);
+                Navigate(AllSRNForm)
+            Text: ="View"
+            Width: =120
+            X: =1200
+            Y: =20
+            ZIndex: =9
+
+    Icon12 As icon.Reload:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =40
+        Icon: =Icon.Reload
+        OnSelect: =Refresh('Inventory Requisition List')
+        Width: =40
+        X: =34
+        Y: =130
+        ZIndex: =11
+

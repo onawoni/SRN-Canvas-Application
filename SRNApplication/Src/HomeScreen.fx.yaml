@@ -1,0 +1,173 @@
+HomeScreen As screen:
+    BackgroundImage: ='New Ladol Images'
+    ImagePosition: =ImagePosition.Fill
+
+    Rectangle4 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.7)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    Rectangle3 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =147
+        Width: =1366
+        ZIndex: =2
+
+    Image13 As image:
+        Height: =147
+        Image: =ladol
+        Width: =427
+        ZIndex: =3
+
+    Label5 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Text: =User().FullName
+        X: =1063
+        Y: =24
+        ZIndex: =4
+
+    Image14 As image:
+        Height: =60
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =60
+        X: =1233
+        Y: =14
+        ZIndex: =5
+
+    Button2 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        OnSelect: =Navigate(RequesterScreen)
+        Text: ="New Request"
+        Width: =500
+        X: =470
+        Y: =291
+        ZIndex: =6
+
+    Label5_1 As label:
+        Align: =Align.Right
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Text: =Today()
+        X: =1195
+        Y: =722
+        ZIndex: =7
+
+    Button2_1 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        OnSelect: =Navigate(AllSRNScreen)
+        Text: ="All Request"
+        Width: =500
+        X: =470
+        Y: =370
+        ZIndex: =8
+
+    Button2_2 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: |-
+            =If(
+                User().Email in Office365Groups.ListGroupMembers("22b4e05d-5edd-4fa8-9ff4-eaa3f07f2eff").value.mail,
+                DisplayMode.Edit,
+                DisplayMode.Disabled
+            )
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        OnSelect: =Navigate(ManagersScreen)
+        Text: ="Manager's Approvals"
+        Width: =500
+        X: =470
+        Y: =451
+        ZIndex: =9
+
+    Button2_3 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: |-
+            =If(
+                User().Email in Office365Groups.ListGroupMembers("aab5efd9-0a96-4336-b077-b96972368644").value.mail,
+                DisplayMode.Edit,
+                DisplayMode.Disabled
+            )
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        OnSelect: =Navigate(StoreManagersScreen)
+        Text: ="Store Manager's Approvals"
+        Width: =500
+        X: =470
+        Y: =537
+        ZIndex: =10
+
+    Label6 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =52
+        Size: =25
+        Text: ="SRN"
+        Width: =424
+        X: =462
+        Y: =40
+        ZIndex: =11
+
+    Label6_1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        Size: =25
+        Text: ="Welcome,"
+        Width: =192
+        X: =440
+        Y: =158
+        ZIndex: =12
+
+    Name As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        Size: =25
+        Text: =User().FullName
+        Tooltip: =Name.Text
+        Width: =357
+        Wrap: =false
+        X: =632
+        Y: =158
+        ZIndex: =13
+
+    Button2_4 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: |-
+            =If(
+                User().Email in Office365Groups.ListGroupMembers("aab5efd9-0a96-4336-b077-b96972368644").value.mail,
+                DisplayMode.Edit,
+                DisplayMode.Disabled
+            )
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        OnSelect: |-
+            =Launch("https://apps.powerapps.com/play/e/default-606d2bd6-bae0-4766-8d4b-07321c1514ef/a/6b52fb13-49d7-4f5d-9e10-603ad2c50d6d?tenantId=606d2bd6-bae0-4766-8d4b-07321c1514ef&hint=cc286980-7799-43c1-9c2a-01e28ddb8a8e&sourcetime=1699260919520")
+        Text: ="Purchase Requisition App"
+        Width: =500
+        X: =470
+        Y: =611
+        ZIndex: =14
+
+    Icon10 As icon.Home:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =50
+        Icon: =Icon.Home
+        Width: =50
+        X: =462
+        Y: =24
+        ZIndex: =15
+

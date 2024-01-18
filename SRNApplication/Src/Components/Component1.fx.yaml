@@ -1,0 +1,15 @@
+Component1 As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =640
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Image1 As image:
+        Height: =640
+        Image: ='Ladol Image 2'
+        ImagePosition: =ImagePosition.Fill
+        Width: =640
+        ZIndex: =1
+

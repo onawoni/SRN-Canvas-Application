@@ -1,0 +1,42 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+    "CdpRevision": {
+      "BaseUrl": "/v3",
+      "LastChangedTimeString": "2023-12-20T18:12:18.7260000Z",
+      "RevisionNumber": 3
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "Description": "Description",
+      "documentNo": "documentNo",
+      "invoicedAmount_LCY": "Invoiced Amount (LCY)",
+      "jobNo": "jobNo",
+      "jobNo_": "jobNo_",
+      "jobTaskNo": "jobTaskNo",
+      "jobTaskNo_": "jobTaskNo_",
+      "lineAmount": "Line Amount",
+      "lineAmount_LCY": "Line Amount (LCY)",
+      "lineNo": "lineNo",
+      "lineNo_": "lineNo_",
+      "lineType": "lineType",
+      "No": "No.",
+      "plannedDeliveryDate": "plannedDeliveryDate",
+      "planningDate": "planningDate",
+      "Qty_to_Transfer_to_Journal": "Qty. To Transfer To Journal",
+      "Quantity": "Quantity",
+      "totalCost": "Total Cost",
+      "totalCost_LCY": "Total Cost(LCY)",
+      "Type": "Type",
+      "unitCost": "Unit Cost",
+      "unitCost_LCY": "Unit Cost(LCY)",
+      "unitPrice": "Unit Price",
+      "unitPrice_LCY": "Unit Price(LCY)"
+    },
+    "DatasetName": "BUSINESSCENTRAL,975ef38f-509e-ed11-9889-6045bd8e5184",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "jobPlanningLinesSet (snapnetLimited/jobPlanningLinesAPI/v2.0)",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

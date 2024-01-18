@@ -1,0 +1,58 @@
+"StorManagerSuccessScreen As screen.'tabletLayout_Success_ver3.0'":
+    BackgroundImage: ='Ladol Background'
+    ImagePosition: =ImagePosition.Fill
+
+    Rectangle5_1 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(255, 255, 255, 0.9)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    iconCircle1_1 As circle.Circle:
+        Fill: =RGBA(116, 116, 116, 1)
+        X: =Parent.Width/2 - Self.Width/2
+        Y: =(Parent.Height/2 - Self.Height/2) * .7
+        ZIndex: =2
+
+    iconCheck1_1 As icon.Check:
+        Height: =iconCircle1_1.Height
+        Icon: =Icon.Check
+        PaddingBottom: =Self.PaddingTop
+        PaddingLeft: =Self.PaddingTop
+        PaddingRight: =Self.PaddingTop
+        PaddingTop: =24
+        Width: =iconCircle1_1.Width
+        X: =633
+        Y: =233
+        ZIndex: =3
+
+    LblSuccessMsg1_1 As label:
+        Align: =Align.Center
+        AutoHeight: =true
+        Color: =RGBA(116, 116, 116, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =iconCircle1_1.Height
+        Size: =20
+        Text: ="SRN Request successfully submitted"
+        Width: =Parent.Width * 0.75
+        X: =Parent.Width/2 - Self.Width/2
+        Y: =iconCheck1_1.Y + iconCheck1_1.Height + 100
+        ZIndex: =4
+
+    Button3_1 As button:
+        Fill: =RGBA(116, 116, 116, 1)
+        OnSelect: =Navigate(HomeScreen)
+        Text: ="Home"
+        X: =533
+        Y: =614
+        ZIndex: =5
+
+    Button3_2 As button:
+        Fill: =RGBA(116, 116, 116, 1)
+        OnSelect: =Navigate(StoreManagersScreen)
+        Text: ="Back"
+        X: =733
+        Y: =614
+        ZIndex: =6
+
