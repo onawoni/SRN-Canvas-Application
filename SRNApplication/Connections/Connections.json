@@ -16,12 +16,16 @@
         "dataSources": {
           "Ladol Test List": {
             "tableName": "9652ac0a-a0a0-429c-8464-2880d85b3458"
+          },
+          "SRN Jobs": {
+            "tableName": "7ebf52cc-b013-4c67-8901-b474830f9803"
           }
         }
       }
     },
     "dataSources": [
-      "Ladol Test List"
+      "Ladol Test List",
+      "SRN Jobs"
     ],
     "dependencies": {},
     "dependents": [],

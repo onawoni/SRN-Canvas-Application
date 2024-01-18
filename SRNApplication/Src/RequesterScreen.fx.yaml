@@ -1071,7 +1071,9 @@ RequesterScreen As screen:
                             Coll_Item_No:'No.',
                             Coll_Item_Inventory:Inventory,
                             Coll_Item_Quantity:"",
-                            Coll_Item_Description:""
+                            Coll_Item_Description:"",
+                            Coll_Item_JobNo:JobTaskComboBox.Selected.jobNo,
+                            Coll_Item_JobPlanningNo:JobPlanningComboBox.Selected.jobTaskNo
                         }
                     ));
                     Select(Reset_ItmesComboBox);
@@ -1692,7 +1694,8 @@ RequesterScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Height: =36
                 OnSelect: =Select(Parent)
-                Width: =550
+                Tooltip: =TextInput1.Text
+                Width: =350
                 X: =3
                 Y: =10
                 ZIndex: =1
@@ -1704,8 +1707,8 @@ RequesterScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Height: =33
                 OnSelect: =Select(Parent)
-                Width: =200
-                X: =370
+                Width: =150
+                X: =490
                 Y: =10
                 ZIndex: =2
 
@@ -1719,8 +1722,8 @@ RequesterScreen As screen:
                 OnChange: =
                 OnSelect: =Select(Parent)
                 Tooltip: ="Add Quantity"
-                Width: =200
-                X: =948
+                Width: =150
+                X: =1008
                 Y: =8
                 ZIndex: =3
 
@@ -1741,7 +1744,7 @@ RequesterScreen As screen:
                 OnSelect: =Remove(LineItemCollection,ThisItem)
                 Tooltip: ="Remove this item"
                 Width: =50
-                X: =1183
+                X: =1193
                 Y: =8
                 ZIndex: =5
 
@@ -1768,11 +1771,23 @@ RequesterScreen As screen:
                 Height: =36
                 OnChange: =
                 OnSelect: =Select(Parent)
-                Tooltip: ="Add Quantity"
+                Tooltip: =Description_TextInput.Text
                 Width: =350
-                X: =580
+                X: =650
                 Y: =8
                 ZIndex: =7
+
+            TextInput1_2 As text:
+                Color: =RGBA(0, 94, 146, 1)
+                Default: =JobTaskComboBox.Selected.jobNo
+                DisplayMode: =DisplayMode.View
+                FontWeight: =FontWeight.Bold
+                Height: =33
+                OnSelect: =Select(Parent)
+                Width: =100
+                X: =366
+                Y: =10
+                ZIndex: =9
 
         Rectangle18 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
@@ -1819,7 +1834,7 @@ RequesterScreen As screen:
                 Color: =RGBA(255, 255, 255, 1)
                 FontWeight: =FontWeight.Bold
                 Text: ="Item No"
-                X: =400
+                X: =520
                 Y: =165
                 ZIndex: =8
 
@@ -1828,7 +1843,7 @@ RequesterScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Text: ="Quantity"
                 Width: =112
-                X: =999
+                X: =1029
                 Y: =165
                 ZIndex: =9
 
@@ -1837,7 +1852,7 @@ RequesterScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Text: ="Remove"
                 Width: =99
-                X: =1156
+                X: =1176
                 Y: =165
                 ZIndex: =10
 
@@ -1905,9 +1920,18 @@ RequesterScreen As screen:
             FontWeight: =FontWeight.Bold
             Text: ="Description"
             Width: =120
-            X: =704
+            X: =764
             Y: =165
             ZIndex: =16
+
+        Label10_6 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Text: ="Job No"
+            Width: =112
+            X: =376
+            Y: =165
+            ZIndex: =17
 
     Label15 As label:
         Align: =Align.Center
