@@ -35,6 +35,7 @@
       "JobTaskNumber": "Job Task Number",
       "Modified": "Modified",
       "OData__ColorTag": "Color Tag",
+      "Status": "Status",
       "Title": "Title"
     },
     "DatasetName": "https://ladolenterprise-my.sharepoint.com/personal/bcadmin_ladol_com",
