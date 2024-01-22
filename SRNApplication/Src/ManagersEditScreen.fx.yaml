@@ -100,7 +100,7 @@ ManagersEditScreen As screen:
     ManagerForm As form:
         DataSource: ='Inventory Requisition List'
         Height: =529
-        Item: =//varManagerForm
+        Item: =varManagerForm
         NumberOfColumns: =2
         OnSuccess: =Navigate(ReqSuccessScreen)
         Width: =1365
