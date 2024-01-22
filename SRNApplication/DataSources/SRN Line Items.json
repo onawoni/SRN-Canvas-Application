@@ -35,6 +35,7 @@
       "ItemName": "Item Name",
       "ItemNumber": "Item Number",
       "ItemType": "Item Type",
+      "JobLineID": "Job Line ID",
       "JobNumber": "Job Number",
       "JobTaskNumber": "Job Task Number",
       "LineItemID": "LineItem ID",

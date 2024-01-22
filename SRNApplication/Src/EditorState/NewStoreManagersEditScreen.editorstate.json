@@ -79,7 +79,7 @@
       "MetaDataIDKey": "",
       "Name": "ApprovalComment_DataCard2_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 7,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12167,7 +12167,7 @@
       "MetaDataIDKey": "",
       "Name": "Expected Date_DataCard2_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 5,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16509,7 +16509,7 @@
       "MetaDataIDKey": "",
       "Name": "Issue Description_DataCard2_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 6,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -26821,14 +26821,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
-          "InvariantPropertyName": "Item",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Item",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -27121,7 +27114,7 @@
       "MetaDataIDKey": "",
       "Name": "PR Number_DataCard3",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -27282,7 +27275,7 @@
       "MetaDataIDKey": "",
       "Name": "Project Type_DataCard3",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 9,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -29316,7 +29309,7 @@
       "MetaDataIDKey": "",
       "Name": "Service Type_DataCard2_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 10,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -29480,7 +29473,7 @@
       "MetaDataIDKey": "",
       "Name": "SRN Number_DataCard3",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 8,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
