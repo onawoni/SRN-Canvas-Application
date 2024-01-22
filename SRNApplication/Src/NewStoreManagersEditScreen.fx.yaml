@@ -1747,7 +1747,17 @@ NewStoreManagersEditScreen As screen:
 
     Button12 As button:
         OnSelect: |-
-            =//If(varNewStoreManagerForm.ID in 'SRN Jobs'.ID,    Patch(        'SRN Jobs',        LookUp(            'SRN Jobs',            ID = varNewStoreManagerForm.ID        ),        {Status: "Completed"}    ))
+            =If(
+                varNewStoreManagerForm.ID in 'SRN Jobs'.JobLineID,
+                Patch(
+                    'SRN Jobs',
+                    LookUp(
+                        'SRN Jobs',
+                        JobLineID = varNewStoreManagerForm.ID
+                    ),
+                    {Status: "Completed"}
+                )
+            )
         Text: ="Button"
         X: =858
         Y: =28
