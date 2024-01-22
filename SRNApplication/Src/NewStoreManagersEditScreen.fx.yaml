@@ -84,11 +84,11 @@ NewStoreManagersEditScreen As screen:
             //If(And( Value(Depl_Inven_1.Text) <0,DisplayMode.Disabled,DisplayMode.Edit)) // || (IsBlank(Depl_Inven_1.Text),DisplayMode.Disabled,DisplayMode.Edit))
             If(Value(Depl_Inven_1.Text) <0, DisplayMode.Disabled,DisplayMode.Edit)
         OnSelect: |-
-            =Set(varNewStoreManagerForm, Patch('Inventory Requisition List', varNewStoreManagerForm, {'Approval Status': "Depleted", 'Approval Comment':ApprovalCommentTextInput_2.Text}));
+            =//Set(varNewStoreManagerForm, Patch('Inventory Requisition List', varNewStoreManagerForm, {'Approval Status': "Depleted", 'Approval Comment':ApprovalCommentTextInput_2.Text}));
             Patch('SRN Line Items',NewDepletedItemsCollection);
             Patch('SRN Line Items',NewReturnedItemsCollection);
             //ForAll(DepletedItemsCollection,Patch('SRN Line Items' ,{'Deplete Inventory By':Col_Item_No}));
-            Office365Outlook.SendEmailV2(varNewStoreManagerForm.'Created By'.Email, "Your SRN Item has been depleted", " Hello, <br> Your SRN Item has been depleted.<b> Congratulations</b> <br> See Comment: <b>"&varNewStoreManagerForm.'Approval Comment'&"");
+            //Office365Outlook.SendEmailV2(varNewStoreManagerForm.'Created By'.Email, "Your SRN Item has been depleted", " Hello, <br> Your SRN Item has been depleted.<b> Congratulations</b> <br> See Comment: <b>"&varNewStoreManagerForm.'Approval Comment'&"");
             Clear(NewDepletedItemsCollection);
             Clear(NewReturnedItemsCollection);
             ResetForm(NewStoreManagerForm);
@@ -104,8 +104,8 @@ NewStoreManagersEditScreen As screen:
             //If(IsBlank(QuOfItem_1.Text) Or Not IsNumeric(InvBal_1.Text) Or Value(InvBal_1.Text) < 0, DisplayMode.Disabled, DisplayMode.Edit)
         Fill: =RGBA(168, 0, 0, 1)
         OnSelect: |-
-            =Set(varNewStoreManagerForm, Patch('Inventory Requisition List', varNewStoreManagerForm, {'Approval Status': "Rejected", 'Approval Comment':ApprovalCommentTextInput_2.Text}));
-            Office365Outlook.SendEmailV2(varNewStoreManagerForm.'Created By'.Email, "Your SRN was not approved", " Hello, <br> Your SRN was rejected. See Comment: <b>"&varNewStoreManagerForm.'Approval Comment'&"");
+            =//Set(varNewStoreManagerForm, Patch('Inventory Requisition List', varNewStoreManagerForm, {'Approval Status': "Rejected", 'Approval Comment':ApprovalCommentTextInput_2.Text}));
+            //Office365Outlook.SendEmailV2(varNewStoreManagerForm.'Created By'.Email, "Your SRN was not approved", " Hello, <br> Your SRN was rejected. See Comment: <b>"&varNewStoreManagerForm.'Approval Comment'&"");
             ResetForm(NewStoreManagerForm);
             Navigate(ReqSuccessScreen)
         Text: ="Reject"
@@ -145,6 +145,7 @@ NewStoreManagersEditScreen As screen:
         NewStoreManagerForm As form:
             DataSource: ='Inventory Requisition List'
             Height: =539
+            Item: =//varNewStoreManagerForm
             NumberOfColumns: =2
             OnSuccess: =Navigate(ReqSuccessScreen)
             Width: =1366
@@ -944,7 +945,7 @@ NewStoreManagersEditScreen As screen:
         ZIndex: =15
 
     Record_ID As text:
-        Default: =varNewStoreManagerForm.ID
+        Default: =//varNewStoreManagerForm.ID
         Format: =TextFormat.Number
         Height: =38
         Visible: =false

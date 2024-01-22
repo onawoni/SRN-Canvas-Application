@@ -28540,7 +28540,7 @@
       "MetaDataIDKey": "",
       "Name": "LineItem Heading",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 18,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -28592,7 +28592,7 @@
       "MetaDataIDKey": "",
       "Name": "LineItemNotification",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 17,
+      "ParentIndex": 18,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
