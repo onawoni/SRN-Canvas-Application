@@ -146,6 +146,7 @@ NewStoreManagersEditScreen As screen:
         NewStoreManagerForm As form:
             DataSource: ='Inventory Requisition List'
             Height: =539
+            Item: =varNewStoreManagerForm
             NumberOfColumns: =2
             OnSuccess: =Navigate(ReqSuccessScreen)
             Width: =1366
