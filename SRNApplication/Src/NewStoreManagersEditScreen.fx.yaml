@@ -1745,3 +1745,10 @@ NewStoreManagersEditScreen As screen:
             Y: =185
             ZIndex: =21
 
+    Button12 As button:
+        OnSelect: =
+        Text: ="Button"
+        X: =858
+        Y: =28
+        ZIndex: =20
+
