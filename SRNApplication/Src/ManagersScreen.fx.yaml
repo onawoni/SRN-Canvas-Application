@@ -162,7 +162,7 @@ ManagersScreen As screen:
         Button5 As button:
             Fill: =RGBA(0, 94, 146, 1)
             OnSelect: |-
-                =Set(varManagerForm, ThisItem);
+                =//Set(varManagerForm, ThisItem);
                 ViewForm(ManagerForm);
                 Navigate(ManagerForm)
             Text: ="View"
