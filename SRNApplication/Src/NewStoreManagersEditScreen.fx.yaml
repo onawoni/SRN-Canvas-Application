@@ -85,10 +85,10 @@ NewStoreManagersEditScreen As screen:
             If(Value(Depl_Inven_1.Text) <0, DisplayMode.Disabled,DisplayMode.Edit)
         OnSelect: |-
             =Set(
-                varNewStoreManagerForm,
+                varNewStoreManagersForm,
                 Patch(
                     'Inventory Requisition List',
-                    varNewStoreManagerForm,
+                    varNewStoreManagersForm,
                     {
                         'Approval Status': "Depleted",
                         'Approval Comment': ApprovalCommentTextInput_2.Text
@@ -104,21 +104,21 @@ NewStoreManagersEditScreen As screen:
                 NewReturnedItemsCollection
             );
             If(
-                varNewStoreManagerForm.ID in 'SRN Jobs'.JobLineID,
+                varNewStoreManagersForm.ID in 'SRN Jobs'.JobLineID,
                 Patch(
                     'SRN Jobs',
                     LookUp(
                         'SRN Jobs',
-                        JobLineID = varNewStoreManagerForm.ID
+                        JobLineID = varNewStoreManagersForm.ID
                     ),
                     {Status: "Completed"}
                 )
             );
             //ForAll(DepletedItemsCollection,Patch('SRN Line Items' ,{'Deplete Inventory By':Col_Item_No}));
             Office365Outlook.SendEmailV2(
-                varNewStoreManagerForm.'Created By'.Email,
+                varNewStoreManagersForm.'Created By'.Email,
                 "Your SRN Item has been depleted",
-                " Hello, <br> Your SRN Item has been depleted.<b> Congratulations</b> <br> See Comment: <b>" & varNewStoreManagerForm.'Approval Comment' & ""
+                " Hello, <br> Your SRN Item has been depleted.<b> Congratulations</b> <br> See Comment: <b>" & varNewStoreManagersForm.'Approval Comment' & ""
             );
             Clear(NewDepletedItemsCollection);
             Clear(NewReturnedItemsCollection);
@@ -176,7 +176,7 @@ NewStoreManagersEditScreen As screen:
         NewStoreManagerForm As form:
             DataSource: ='Inventory Requisition List'
             Height: =539
-            Item: =varNewStoreManagerForm
+            Item: =varNewStoreManagersForm
             NumberOfColumns: =2
             OnSuccess: =Navigate(ReqSuccessScreen)
             Width: =1366
@@ -1779,12 +1779,12 @@ NewStoreManagersEditScreen As screen:
     Button12 As button:
         OnSelect: |-
             =If(
-                varNewStoreManagerForm.ID in 'SRN Jobs'.JobLineID,
+                varNewStoreManagersForm.ID in 'SRN Jobs'.JobLineID,
                 Patch(
                     'SRN Jobs',
                     LookUp(
                         'SRN Jobs',
-                        JobLineID = varNewStoreManagerForm.ID
+                        JobLineID = varNewStoreManagersForm.ID
                     ),
                     {Status: "Completed"}
                 )
