@@ -5343,6 +5343,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "RequesterScreen.Container5.JobTaskNoSearch.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "RequesterScreen.Container5.JobTaskNoSearch.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "RequesterScreen",
+                "type": "RequesterScreen.Container5.JobTaskNoSearch"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.VarItemloading"
                 }
               ],

@@ -976,7 +976,7 @@ NewStoreManagersEditScreen As screen:
         ZIndex: =15
 
     Record_ID As text:
-        Default: =//varNewStoreManagerForm.ID
+        Default: =varNewStoreManagersForm.ID
         Format: =TextFormat.Number
         Height: =38
         Visible: =false

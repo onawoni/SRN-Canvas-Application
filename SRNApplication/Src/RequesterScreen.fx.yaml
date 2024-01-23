@@ -2032,7 +2032,9 @@ RequesterScreen As screen:
             Height: =50
             Icon: =Icon.CancelBadge
             OnSelect: |-
-                =UpdateContext({jobs:false})
+                =UpdateContext({jobs:false});
+                UpdateContext({Jobs:false});
+                Reset(JobTaskNoSearch)
             Width: =50
             X: =1281
             Y: =111
@@ -2049,29 +2051,6 @@ RequesterScreen As screen:
             X: =56
             Y: =111
             ZIndex: =5
-
-        JobTaskComboBox As combobox:
-            ChevronBackground: =RGBA(255, 255, 255, 1)
-            ChevronFill: =RGBA(0, 94, 146, 1)
-            DisplayFields: =["jobNo"]
-            Items: ='jobTaskSet (snapnetLimited/jobTasks/v2.0)'
-            SearchFields: =["jobNo"]
-            SearchItems: =Search('jobTaskSet (snapnetLimited/jobTasks/v2.0)',JobTaskComboBox.SearchText,"jobNo")
-            SelectMultiple: =false
-            X: =140
-            Y: =244
-            ZIndex: =6
-
-        Label20 As label:
-            Color: =RGBA(255, 255, 255, 1)
-            FontWeight: =FontWeight.Bold
-            Height: =45
-            Size: =15
-            Text: ="Job Task Number"
-            Width: =328
-            X: =140
-            Y: =189
-            ZIndex: =7
 
         Label20_1 As label:
             Color: =RGBA(255, 255, 255, 1)
@@ -2130,30 +2109,6 @@ RequesterScreen As screen:
             Y: =275
             ZIndex: =12
 
-        JobPlanningComboBox As combobox:
-            ChevronBackground: =RGBA(255, 255, 255, 1)
-            ChevronFill: =RGBA(0, 94, 146, 1)
-            DisplayFields: =["jobTaskNo"]
-            IsSearchable: =false
-            Items: =Filter('jobPlanningLinesSet (snapnetLimited/jobPlanningLinesAPI/v2.0)',jobNo = JobTaskComboBox.Selected.jobNo)
-            SearchFields: =["jobNo"]
-            SearchItems: =[]
-            SelectMultiple: =false
-            X: =140
-            Y: =449
-            ZIndex: =13
-
-        Label20_6 As label:
-            Color: =RGBA(255, 255, 255, 1)
-            FontWeight: =FontWeight.Bold
-            Height: =45
-            Size: =15
-            Text: ="Job Planning Number"
-            Width: =328
-            X: =140
-            Y: =394
-            ZIndex: =14
-
         Label20_7 As label:
             Color: =RGBA(0, 94, 146, 1)
             FontWeight: =FontWeight.Bold
@@ -2163,7 +2118,7 @@ RequesterScreen As screen:
             Width: =328
             X: =1018
             Y: =321
-            ZIndex: =15
+            ZIndex: =16
 
         Label20_8 As label:
             Color: =RGBA(0, 94, 146, 1)
@@ -2174,7 +2129,7 @@ RequesterScreen As screen:
             Width: =296
             X: =708
             Y: =321
-            ZIndex: =16
+            ZIndex: =17
 
         Label20_9 As label:
             Align: =Align.Center
@@ -2186,7 +2141,7 @@ RequesterScreen As screen:
             Width: =296
             X: =838
             Y: =177
-            ZIndex: =17
+            ZIndex: =18
 
         Label20_10 As label:
             Color: =RGBA(0, 94, 146, 1)
@@ -2197,7 +2152,7 @@ RequesterScreen As screen:
             Width: =328
             X: =1018
             Y: =491
-            ZIndex: =18
+            ZIndex: =19
 
         Label20_12 As label:
             Color: =RGBA(0, 94, 146, 1)
@@ -2219,7 +2174,7 @@ RequesterScreen As screen:
             Width: =328
             X: =1018
             Y: =543
-            ZIndex: =22
+            ZIndex: =21
 
         Label20_15 As label:
             Color: =RGBA(0, 94, 146, 1)
@@ -2230,7 +2185,7 @@ RequesterScreen As screen:
             Width: =296
             X: =708
             Y: =543
-            ZIndex: =23
+            ZIndex: =22
 
         Label20_16 As label:
             Align: =Align.Center
@@ -2242,5 +2197,92 @@ RequesterScreen As screen:
             Width: =296
             X: =838
             Y: =439
+            ZIndex: =23
+
+        JobTaskNoSearch As text:
+            Default: =
+            HintText: ="Search for Job Task"
+            Width: =200
+            X: =130
+            Y: =196
             ZIndex: =24
+
+        Button13 As button:
+            Color: =RGBA(0, 94, 146, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =38
+            OnSelect: |-
+                =UpdateContext({Jobs:true})
+            Text: ="Search"
+            X: =392
+            Y: =199
+            ZIndex: =25
+
+        JobGroup As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =26
+
+            JobTaskComboBox As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["Description"]
+                IsSearchable: =false
+                Items: =Filter('jobTaskSet (snapnetLimited/jobTasks/v2.0)',jobNo = JobTaskNoSearch.Text)
+                SearchFields: =["jobNo"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Visible: =Jobs
+                X: =170
+                Y: =374
+                ZIndex: =6
+
+            Label20 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =45
+                Size: =15
+                Text: ="Job Task Number"
+                Visible: =Jobs
+                Width: =328
+                X: =170
+                Y: =319
+                ZIndex: =7
+
+            JobPlanningComboBox As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["jobTaskNo"]
+                IsSearchable: =false
+                Items: =Filter('jobPlanningLinesSet (snapnetLimited/jobPlanningLinesAPI/v2.0)',jobNo = JobTaskComboBox.Selected.jobNo)
+                SearchFields: =["jobNo"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Visible: =Jobs
+                X: =170
+                Y: =539
+                ZIndex: =13
+
+            Label20_6 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =45
+                Size: =15
+                Text: ="Job Planning Number"
+                Visible: =Jobs
+                Width: =328
+                X: =170
+                Y: =484
+                ZIndex: =14
+
+            Label21 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                Text: ="Select Job Task Number from the list of results"
+                Visible: =Jobs
+                Width: =400
+                X: =130
+                Y: =259
+                ZIndex: =15
 
