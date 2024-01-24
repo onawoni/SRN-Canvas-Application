@@ -103,17 +103,7 @@ NewStoreManagersEditScreen As screen:
                 'SRN Line Items',
                 NewReturnedItemsCollection
             );
-            If(
-                varNewStoreManagerForm.ID in 'SRN Jobs'.JobLineID,
-                Patch(
-                    'SRN Jobs',
-                    LookUp(
-                        'SRN Jobs',
-                        JobLineID = varNewStoreManagerForm.ID
-                    ),
-                    {Status: "Completed"}
-                )
-            );
+            
             //ForAll(DepletedItemsCollection,Patch('SRN Line Items' ,{'Deplete Inventory By':Col_Item_No}));
             Office365Outlook.SendEmailV2(
                 varNewStoreManagerForm.'Created By'.Email,
