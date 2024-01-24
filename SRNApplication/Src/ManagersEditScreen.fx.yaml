@@ -63,8 +63,8 @@ ManagersEditScreen As screen:
         DisplayMode: =If( IsBlank(ApprovalCommentTextInput_1.Text),DisplayMode.Disabled,DisplayMode.Edit)
         Fill: =RGBA(255, 255, 255, 1)
         OnSelect: |-
-            =Set(varManagerForm, Patch('Inventory Requisition List', varManagerForm, {'Approval Status': "Approved", 'Approval Comment':ApprovalCommentTextInput_1.Text}));
-            Office365Outlook.SendEmailV2(varManagerForm.'Created By'.Email, "Your SRN request has been approved", " Hello "&varManagerForm.'Created By'.DisplayName&", <br> Your SRN has been approved.<b> Congratulations</b> <br> While waiting for the Item depletion by the store manager, please see your manager's Comment: <b>"&varManagerForm.'Approval Comment'&"");
+            =Set(varManagersForm, Patch('Inventory Requisition List', varManagersForm, {'Approval Status': "Approved", 'Approval Comment':ApprovalCommentTextInput_1.Text}));
+            Office365Outlook.SendEmailV2(varManagersForm.'Created By'.Email, "Your SRN request has been approved", " Hello "&varManagersForm.'Created By'.DisplayName&", <br> Your SRN has been approved.<b> Congratulations</b> <br> While waiting for the Item depletion by the store manager, please see your manager's Comment: <b>"&varManagersForm.'Approval Comment'&"");
             Patch('SRN Line Items',ManagerItemUpdate);
             Clear(ManagerItemUpdate);
             ResetForm(ManagerForm);
@@ -78,8 +78,8 @@ ManagersEditScreen As screen:
         DisplayMode: =If( IsBlank(ApprovalCommentTextInput_1.Text),DisplayMode.Disabled,DisplayMode.Edit)
         Fill: =RGBA(168, 0, 0, 1)
         OnSelect: |-
-            =Set(varManagerForm, Patch('Inventory Requisition List', varManagerForm, {'Approval Status': "Rejected", 'Approval Comment':ApprovalCommentTextInput_1.Text}));
-            Office365Outlook.SendEmailV2(varManagerForm.'Created By'.Email, "SRN Request Rejected", " Hello "&varManagerForm.'Created By'.DisplayName&", <br> Your SRN was rejected. Please see Comment: <b>"&varManagerForm.'Approval Comment'&"");
+            =Set(varManagersForm, Patch('Inventory Requisition List', varManagersForm, {'Approval Status': "Rejected", 'Approval Comment':ApprovalCommentTextInput_1.Text}));
+            Office365Outlook.SendEmailV2(varManagersForm.'Created By'.Email, "SRN Request Rejected", " Hello "&varManagersForm.'Created By'.DisplayName&", <br> Your SRN was rejected. Please see Comment: <b>"&varManagersForm.'Approval Comment'&"");
             ResetForm(ManagerForm);
             Navigate(ReqSuccessScreen)
         Text: ="Reject"
@@ -100,7 +100,7 @@ ManagersEditScreen As screen:
     ManagerForm As form:
         DataSource: ='Inventory Requisition List'
         Height: =529
-        Item: =varManagerForm
+        Item: =varManagersForm
         NumberOfColumns: =2
         OnSuccess: =Navigate(ReqSuccessScreen)
         Width: =1365
@@ -919,7 +919,7 @@ ManagersEditScreen As screen:
         ZIndex: =14
 
     Manger_Form_ID As text:
-        Default: =varManagerForm.ID
+        Default: =varManagersForm.ID
         Visible: =false
         X: =875
         Y: =25
