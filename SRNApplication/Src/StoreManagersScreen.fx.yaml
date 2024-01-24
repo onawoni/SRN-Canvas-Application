@@ -152,9 +152,9 @@ StoreManagersScreen As screen:
         Button8 As button:
             Height: =30
             OnSelect: |+
-                =Set(varNewStoreManagerForm,ThisItem);
+                =Set(varStoreManagerForm,ThisItem);
                 ViewForm(NewStoreManagerForm);
-                Navigate(NewStoreManagerForm)
+                Navigate(NewStoreManagerForm);
                 
             Text: ="View"
             Width: =120

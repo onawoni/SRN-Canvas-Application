@@ -84,7 +84,7 @@ NewStoreManagersEditScreen As screen:
             //If(And( Value(Depl_Inven_1.Text) <0,DisplayMode.Disabled,DisplayMode.Edit)) // || (IsBlank(Depl_Inven_1.Text),DisplayMode.Disabled,DisplayMode.Edit))
             If(Value(Depl_Inven_1.Text) <0, DisplayMode.Disabled,DisplayMode.Edit)
         OnSelect: |-
-            =Set(varNewStoreManagerForm, Patch('Inventory Requisition List', varNewStoreManagerForm, {'Approval Status': "Depleted", 'Approval Comment':ApprovalCommentTextInput_2.Text}));
+            =Set(varNewStoreManagerForm, Patch('Inventory Requisition List', varStoreManagerForm, {'Approval Status': "Depleted", 'Approval Comment':ApprovalCommentTextInput_2.Text}));
             Patch('SRN Line Items',NewDepletedItemsCollection);
             Patch('SRN Line Items',NewReturnedItemsCollection);
             //ForAll(DepletedItemsCollection,Patch('SRN Line Items' ,{'Deplete Inventory By':Col_Item_No}));
@@ -145,7 +145,7 @@ NewStoreManagersEditScreen As screen:
         NewStoreManagerForm As form:
             DataSource: ='Inventory Requisition List'
             Height: =539
-            Item: =varNewStoreManagerForm
+            Item: =varStoreManagerForm
             NumberOfColumns: =2
             OnSuccess: =Navigate(ReqSuccessScreen)
             Width: =1366
@@ -945,7 +945,7 @@ NewStoreManagersEditScreen As screen:
         ZIndex: =15
 
     Record_ID As text:
-        Default: =varNewStoreManagerForm.ID
+        Default: =varStoreManagerForm.ID
         Format: =TextFormat.Number
         Height: =38
         Visible: =false
