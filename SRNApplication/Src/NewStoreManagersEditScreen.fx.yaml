@@ -83,7 +83,16 @@ NewStoreManagersEditScreen As screen:
             =//If(IsBlank(QuOfItem_1.Text) || Value(InvBal_1.Text) < 0,DisplayMode.Disabled,DisplayMode.Edit);
             //If(And( Value(Depl_Inven_1.Text) <0,DisplayMode.Disabled,DisplayMode.Edit)) // || (IsBlank(Depl_Inven_1.Text),DisplayMode.Disabled,DisplayMode.Edit))
             If(Value(Depl_Inven_1.Text) <0, DisplayMode.Disabled,DisplayMode.Edit)
-        OnSelect: =
+        OnSelect: |-
+            =Set(varNewStoreManagerForm, Patch('Inventory Requisition List', varNewStoreManagerForm, {'Approval Status': "Depleted", 'Approval Comment':ApprovalCommentTextInput_2.Text}));
+            Patch('SRN Line Items',NewDepletedItemsCollection);
+            Patch('SRN Line Items',NewReturnedItemsCollection);
+            //ForAll(DepletedItemsCollection,Patch('SRN Line Items' ,{'Deplete Inventory By':Col_Item_No}));
+            Office365Outlook.SendEmailV2(varNewStoreManagerForm.'Created By'.Email, "Your SRN Item has been depleted", " Hello, <br> Your SRN Item has been depleted.<b> Congratulations</b> <br> See Comment: <b>"&varNewStoreManagerForm.'Approval Comment'&"");
+            Clear(NewDepletedItemsCollection);
+            Clear(NewReturnedItemsCollection);
+            ResetForm(NewStoreManagerForm);
+            Navigate(StorManagerSuccessScreen)
         Text: ="Deplete"
         X: =1206
         Y: =726
