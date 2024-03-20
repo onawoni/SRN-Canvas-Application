@@ -2255,6 +2255,7 @@ RequesterScreen As screen:
                 ChevronBackground: =RGBA(255, 255, 255, 1)
                 ChevronFill: =RGBA(0, 94, 146, 1)
                 DisplayFields: =["jobTaskNo"]
+                DisplayMode: =If(IsBlank(JobTaskComboBox.Selected.Description),DisplayMode.Disabled,DisplayMode.Edit)
                 IsSearchable: =false
                 Items: =Filter('jobPlanningLinesSet (snapnetLimited/jobPlanningLinesAPI/v2.0)',jobNo = JobTaskComboBox.Selected.jobNo)
                 SearchFields: =["jobNo"]

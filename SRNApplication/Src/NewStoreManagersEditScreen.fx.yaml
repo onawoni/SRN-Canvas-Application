@@ -88,12 +88,12 @@ NewStoreManagersEditScreen As screen:
             Patch('SRN Line Items',NewDepletedItemsCollection);
             Patch('SRN Line Items',NewReturnedItemsCollection);
             If(
-                varStoreManagerForm.ID in 'SRN Jobs'.JobLineID,
+                varStoreManagerForm.ID in 'SRN Jobs'.'Job Line ID',
                 Patch(
                     'SRN Jobs',
                     LookUp(
                         'SRN Jobs',
-                        JobLineID = varStoreManagerForm.ID
+                        'Job Line ID' = varStoreManagerForm.ID
                     ),
                     {Status: "Completed"}
                 )
@@ -1159,7 +1159,7 @@ NewStoreManagersEditScreen As screen:
             Depl_Inven_1 As text:
                 Default: |-
                     =//ThisItem.'Deplete Inventory By'
-                    Inv_Bal_1 - Inv_Bal_2
+                    Inv_Bal_1.Text - Inv_Bal_2.Text
                 DisplayMode: =DisplayMode.View
                 Height: =38
                 OnChange: |-
@@ -1572,7 +1572,7 @@ NewStoreManagersEditScreen As screen:
             Depl_Inven_2 As text:
                 Default: |-
                     =//ThisItem.'Deplete Inventory By'
-                    Inv_Bal_3 + Inv_Bal_4
+                    Inv_Bal_3.Text + Inv_Bal_4.Text
                 DisplayMode: =DisplayMode.View
                 Height: =38
                 OnChange: |-
